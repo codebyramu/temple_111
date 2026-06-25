@@ -20,13 +20,13 @@ export default function RiversPage() {
           style={{ height: "120%", y: imgY }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-stone-950/90 via-stone-950/40 to-transparent" />
-        <div className="relative z-10 max-w-7xl mx-auto w-full px-6 md:px-10 pb-16 md:pb-24">
+        <div className="relative z-10 max-w-7xl mx-auto w-full px-5 md:px-10 pb-10 md:pb-24">
           <div className="flex items-center gap-2 text-[10px] uppercase tracking-widest text-stone-400 mb-6">
             <Link to="/" className="hover:text-amber-400 transition-colors">Home</Link>
             <span>/</span>
             <span className="text-amber-400">Sacred Rivers</span>
           </div>
-          <h1 className="font-['Cinzel'] font-black text-white leading-tight mb-4"
+          <h1 className="font-['Philosopher'] font-black text-white leading-tight mb-4"
             style={{ fontSize: "clamp(2.5rem, 7vw, 6rem)" }}>
             Three Sacred Rivers.
           </h1>
@@ -37,10 +37,10 @@ export default function RiversPage() {
       </section>
 
       {/* INTRO */}
-      <section className="bg-stone-50 py-24 md:py-32">
-        <div className="max-w-4xl mx-auto px-6 md:px-10">
+      <section className="bg-stone-50 py-12 md:py-32">
+        <div className="max-w-4xl mx-auto px-5 md:px-10">
           <Reveal>
-            <h2 className="font-['Cinzel'] font-bold text-stone-900 leading-tight mb-8"
+            <h2 className="font-['Philosopher'] font-bold text-stone-900 leading-tight mb-8"
               style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
               A Divine Triangle of Waters
             </h2>
@@ -56,14 +56,14 @@ export default function RiversPage() {
       {/* RIVERS DETAIL */}
       {RIVERS.map((r, i) => (
         <section key={r.id} className={i % 2 === 0 ? "bg-stone-100 py-20" : "bg-stone-50 py-20"}>
-          <div className="max-w-7xl mx-auto px-6 md:px-10">
+          <div className="max-w-7xl mx-auto px-5 md:px-10">
             <div className={`grid grid-cols-1 lg:grid-cols-2 gap-14 items-center ${i % 2 === 1 ? "lg:[&>*:first-child]:order-2" : ""}`}>
               <Reveal>
                 <div className="relative rounded-2xl overflow-hidden shadow-xl" style={{ height: "400px" }}>
                   <img src={r.img} alt={r.name} className="absolute inset-0 w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-stone-950/30" />
                   <div className="absolute bottom-6 left-6">
-                    <p className="font-['Cinzel'] font-black text-white text-4xl">{r.name}</p>
+                    <p className="font-['Philosopher'] font-black text-white text-4xl">{r.name}</p>
                     <p className="text-amber-300 text-[11px] uppercase tracking-widest mt-1">{r.role}</p>
                   </div>
                 </div>
@@ -72,7 +72,7 @@ export default function RiversPage() {
               <Reveal delay={0.1}>
                 <div>
                   <p className="text-[10px] uppercase tracking-widest text-amber-700 mb-3">Sacred River {["I", "II", "III"][i]}</p>
-                  <h2 className="font-['Cinzel'] font-bold text-stone-900 leading-tight mb-3"
+                  <h2 className="font-['Philosopher'] font-bold text-stone-900 leading-tight mb-3"
                     style={{ fontSize: "clamp(2rem, 4vw, 3.2rem)" }}>
                     {r.name}
                   </h2>
@@ -91,7 +91,7 @@ export default function RiversPage() {
       ))}
 
       {/* CLOSING */}
-      <section className="bg-stone-900 py-24 px-6 md:px-10 text-center">
+      <section className="bg-stone-900 py-24 px-5 md:px-10 text-center">
         <Reveal>
           <p className="font-['Cormorant_Garamond'] italic text-stone-100 leading-snug mb-8"
             style={{ fontSize: "clamp(1.6rem, 4vw, 3rem)" }}>

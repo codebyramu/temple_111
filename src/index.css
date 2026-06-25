@@ -34,10 +34,15 @@ h1, h2, h3 {
   hyphens: auto;
 }
 
-/* ── Cursor override ── */
+/* ── Cursor override — desktop only ── */
 @media (hover: hover) and (pointer: fine) {
   * { cursor: none !important; }
   body { cursor: none; }
+}
+
+/* ── Mobile: restore normal cursor ── */
+@media (hover: none), (pointer: coarse) {
+  * { cursor: auto !important; }
 }
 
 /* ── Selection color ── */

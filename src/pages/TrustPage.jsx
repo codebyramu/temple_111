@@ -6,7 +6,7 @@ export default function TrustPage() {
   return (
     <PageTransition>
       {/* HERO */}
-      <section className="relative min-h-[75dvh] flex items-end overflow-hidden">
+      <section className="relative min-h-[55dvh] md:min-h-[75dvh] flex items-end overflow-hidden">
         <Image3D
           src="/images/village_aerial.jpg"
           alt="Srinivas Rama Trust"
@@ -16,14 +16,14 @@ export default function TrustPage() {
           hoverScale={1}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-stone-950/95 via-stone-950/60 to-stone-950/20" />
-        <div className="relative z-10 max-w-7xl mx-auto w-full px-6 md:px-10 pb-16 md:pb-24">
+        <div className="relative z-10 max-w-7xl mx-auto w-full px-5 md:px-10 pb-10 md:pb-24">
           <div className="flex items-center gap-2 text-[10px] uppercase tracking-widest text-stone-400 mb-6">
             <Link to="/" className="hover:text-amber-400 transition-colors">Home</Link>
             <span>/</span>
             <span className="text-amber-400">Srinivas Rama Trust</span>
           </div>
           <SplitText
-            className="font-['Cinzel'] font-black text-white leading-tight mb-4"
+            className="font-['Philosopher'] font-black text-white leading-tight mb-4"
             style={{ fontSize: "clamp(2.5rem, 7vw, 6rem)" }}
           >
             Srinivas Rama Trust
@@ -35,11 +35,11 @@ export default function TrustPage() {
       </section>
 
       {/* OVERVIEW */}
-      <section className="bg-stone-50 py-24 md:py-32">
-        <div className="max-w-4xl mx-auto px-6 md:px-10">
+      <section className="bg-stone-50 py-12 md:py-32">
+        <div className="max-w-4xl mx-auto px-5 md:px-10">
           <Reveal>
             <SplitText
-              className="font-['Cinzel'] font-bold text-stone-900 leading-tight mb-10"
+              className="font-['Philosopher'] font-bold text-stone-900 leading-tight mb-10"
               style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}
             >
               About the Trust
@@ -61,11 +61,11 @@ export default function TrustPage() {
       </section>
 
       {/* OPPORTUNITIES */}
-      <section className="bg-stone-100 py-24 md:py-32">
-        <div className="max-w-7xl mx-auto px-6 md:px-10">
+      <section className="bg-stone-100 py-12 md:py-32">
+        <div className="max-w-7xl mx-auto px-5 md:px-10">
           <Reveal>
             <SplitText
-              className="font-['Cinzel'] font-bold text-stone-900 mb-12 text-center"
+              className="font-['Philosopher'] font-bold text-stone-900 mb-12 text-center"
               style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}
             >
               Opportunities to Serve
@@ -88,7 +88,7 @@ export default function TrustPage() {
             ].map((o, i) => (
               <motion.div key={o.title} variants={staggerItem} className="group relative bg-white/60 backdrop-blur-md rounded-2xl p-8 border border-stone-200/50 hover:bg-white hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:-translate-y-1 transition-all duration-300">
                 <div className="w-10 h-1 bg-amber-500 mb-6 rounded-full origin-left group-hover:scale-x-150 transition-transform duration-500" />
-                <h3 className="font-['Cinzel'] font-bold text-stone-900 text-lg mb-3">{o.title}</h3>
+                <h3 className="font-['Philosopher'] font-bold text-stone-900 text-lg mb-3">{o.title}</h3>
                 <p className="text-stone-600 text-sm leading-relaxed">{o.desc}</p>
               </motion.div>
             ))}
@@ -97,10 +97,10 @@ export default function TrustPage() {
       </section>
 
       {/* GET IN TOUCH */}
-      <section className="bg-stone-50 py-24 md:py-32">
-        <div className="max-w-4xl mx-auto px-6 md:px-10 text-center">
+      <section className="bg-stone-50 py-12 md:py-32">
+        <div className="max-w-4xl mx-auto px-5 md:px-10 text-center">
           <Reveal>
-            <h2 className="font-['Cinzel'] font-bold text-stone-900 leading-tight mb-8"
+            <h2 className="font-['Philosopher'] font-bold text-stone-900 leading-tight mb-8"
               style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
               Contact & Donations
             </h2>
@@ -108,7 +108,7 @@ export default function TrustPage() {
               Donations can be made for temple upkeep, festival sponsorship, educational scholarships, and medical aid. For more details on volunteering or making a contribution, please get in touch with the Trust office.
             </p>
             <div className="inline-flex flex-col items-center gap-4 bg-white p-8 rounded-2xl border border-stone-200 shadow-sm">
-              <p className="font-['Cinzel'] font-bold text-stone-900 text-xl">Srinivas Rama Trust</p>
+              <p className="font-['Philosopher'] font-bold text-stone-900 text-xl">Srinivas Rama Trust</p>
               <p className="text-stone-500 text-sm uppercase tracking-widest">Bhaskararajapuram, Tamil Nadu</p>
               <div className="w-16 h-px bg-stone-300 my-2" />
               <p className="text-stone-600 text-sm">To volunteer or donate, please email us or visit the temple office.</p>

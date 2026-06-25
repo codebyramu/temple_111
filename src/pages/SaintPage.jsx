@@ -14,16 +14,16 @@ export default function SaintPage() {
   return (
     <PageTransition>
       {/* HERO */}
-      <section className="relative min-h-[75dvh] flex items-end overflow-hidden">
+      <section className="relative min-h-[55dvh] md:min-h-[75dvh] flex items-end overflow-hidden">
         <Image3D src="/images/saint_scholar.jpg" alt="Shri Bhaskararaya" className="absolute inset-0 w-full h-full" imgClassName="w-full h-full object-cover" style={{ width: "100%", height: "100%" }} hoverScale={1} />
         <div className="absolute inset-0 bg-gradient-to-t from-stone-950/95 via-stone-950/50 to-stone-950/10" />
-        <div className="relative z-10 max-w-7xl mx-auto w-full px-6 md:px-10 pb-16 md:pb-24">
+        <div className="relative z-10 max-w-7xl mx-auto w-full px-5 md:px-10 pb-10 md:pb-24">
           <div className="flex items-center gap-2 text-[10px] uppercase tracking-widest text-stone-400 mb-6">
             <Link to="/" className="hover:text-amber-400 transition-colors">Home</Link>
             <span>/</span>
             <span className="text-amber-400">The Saint</span>
           </div>
-          <h1 className="font-['Cinzel'] font-black text-white leading-tight mb-3"
+          <h1 className="font-['Philosopher'] font-black text-white leading-tight mb-3"
             style={{ fontSize: "clamp(2.5rem, 7vw, 6rem)" }}>
             Shri Bhaskararaya
           </h1>
@@ -34,9 +34,9 @@ export default function SaintPage() {
       </section>
 
       {/* BIO */}
-      <section className="bg-stone-50 py-24 md:py-32">
-        <div className="max-w-7xl mx-auto px-6 md:px-10">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-16 items-start">
+      <section className="bg-stone-50 py-12 md:py-32">
+        <div className="max-w-7xl mx-auto px-5 md:px-10">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 md:gap-16 items-start">
             <div className="lg:col-span-3 space-y-6 text-stone-600 text-base md:text-lg font-light leading-relaxed">
               <Reveal>
                 <p className="font-['Cormorant_Garamond'] text-stone-700 leading-relaxed"
@@ -93,10 +93,10 @@ export default function SaintPage() {
       </section>
 
       {/* WORKS */}
-      <section className="bg-stone-100 py-24 md:py-32">
-        <div className="max-w-7xl mx-auto px-6 md:px-10">
+      <section className="bg-stone-100 py-12 md:py-32">
+        <div className="max-w-7xl mx-auto px-5 md:px-10">
           <Reveal>
-            <h2 className="font-['Cinzel'] font-bold text-stone-900 mb-4" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
+            <h2 className="font-['Philosopher'] font-bold text-stone-900 mb-4" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
               40+ Sanskrit Works
             </h2>
             <p className="text-stone-500 font-light mb-14 max-w-xl">
@@ -108,7 +108,7 @@ export default function SaintPage() {
               <Reveal key={w.title} delay={i * 0.07}>
                 <div className="bg-white rounded-xl p-6 border border-stone-200 h-full">
                   <div className="w-8 h-px bg-amber-600 mb-4" />
-                  <h3 className="font-['Cinzel'] font-semibold text-stone-900 text-base mb-3">{w.title}</h3>
+                  <h3 className="font-['Philosopher'] font-semibold text-stone-900 text-base mb-3">{w.title}</h3>
                   <p className="text-stone-500 text-sm leading-relaxed">{w.desc}</p>
                 </div>
               </Reveal>
@@ -118,7 +118,7 @@ export default function SaintPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-stone-900 py-20 px-6 md:px-10">
+      <section className="bg-stone-900 py-20 px-5 md:px-10">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-8">
           <div>
             <p className="font-['Cormorant_Garamond'] italic text-stone-200 text-2xl max-w-xl leading-relaxed">

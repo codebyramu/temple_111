@@ -30,7 +30,7 @@ export default function TempleDetail() {
         </motion.div>
         <div className="absolute inset-0 bg-gradient-to-t from-stone-950/95 via-stone-950/50 to-stone-950/15" />
 
-        <div className="relative z-10 max-w-7xl mx-auto w-full px-6 md:px-10 pb-16 md:pb-24">
+        <div className="relative z-10 max-w-7xl mx-auto w-full px-5 md:px-10 pb-10 md:pb-24">
           <div className="flex items-center gap-2 mb-8 text-[10px] uppercase tracking-widest text-stone-400">
             <Link to="/" className="hover:text-amber-400 transition-colors">Home</Link>
             <span>/</span>
@@ -40,10 +40,10 @@ export default function TempleDetail() {
           </div>
 
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.3 }}>
-            <div className="font-['Cinzel'] text-amber-500 text-sm font-semibold tracking-widest mb-3">
+            <div className="font-['Philosopher'] text-amber-500 text-sm font-semibold tracking-widest mb-3">
               Shrine {temple.num}
             </div>
-            <h1 className="font-['Cinzel'] font-black text-white leading-tight mb-4"
+            <h1 className="font-['Philosopher'] font-black text-white leading-tight mb-4"
               style={{ fontSize: "clamp(2.5rem, 7vw, 6rem)" }}>
               {temple.name}
             </h1>
@@ -56,8 +56,8 @@ export default function TempleDetail() {
       </section>
 
       {/* STORY */}
-      <section className="bg-stone-50 py-24 md:py-32">
-        <div className="max-w-4xl mx-auto px-6 md:px-10">
+      <section className="bg-stone-50 py-12 md:py-32">
+        <div className="max-w-4xl mx-auto px-5 md:px-10">
           <div className="space-y-8">
             {temple.fullStory.map((para, i) => (
               <Reveal key={i} delay={i * 0.1}>
@@ -82,10 +82,10 @@ export default function TempleDetail() {
 
       {/* FACTS */}
       <section className="bg-stone-100 py-20 md:py-28">
-        <div className="max-w-7xl mx-auto px-6 md:px-10">
+        <div className="max-w-7xl mx-auto px-5 md:px-10">
           <Reveal>
             <WipeReveal>
-              <h2 className="font-['Cinzel'] font-bold text-stone-900 mb-10"
+              <h2 className="font-['Philosopher'] font-bold text-stone-900 mb-10"
                 style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
                 Shrine Details
               </h2>
@@ -102,7 +102,7 @@ export default function TempleDetail() {
               <motion.div key={f.label} variants={staggerItem}
                 className="bg-white rounded-xl p-6 border border-stone-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
                 <p className="text-[10px] uppercase tracking-widest text-amber-700 mb-2">{f.label}</p>
-                <p className="font-['Cinzel'] font-semibold text-stone-900 text-lg">{f.value}</p>
+                <p className="font-['Philosopher'] font-semibold text-stone-900 text-lg">{f.value}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -111,7 +111,7 @@ export default function TempleDetail() {
 
       {/* OTHER SHRINES */}
       <section className="bg-stone-50 py-20">
-        <div className="max-w-7xl mx-auto px-6 md:px-10">
+        <div className="max-w-7xl mx-auto px-5 md:px-10">
           <Reveal>
             <p className="text-[10px] uppercase tracking-widest text-amber-700 mb-6">Other Shrines</p>
           </Reveal>
@@ -130,7 +130,7 @@ export default function TempleDetail() {
                     <div className="absolute inset-0 bg-gradient-to-t from-stone-950/80 to-transparent pointer-events-none" />
                     <div className="absolute bottom-0 left-0 right-0 p-5 pointer-events-none">
                       <p className="text-[10px] uppercase tracking-widest text-amber-400 mb-1">{t.deity}</p>
-                      <h3 className="font-['Cinzel'] font-bold text-white text-base leading-tight">{t.name}</h3>
+                      <h3 className="font-['Philosopher'] font-bold text-white text-base leading-tight">{t.name}</h3>
                     </div>
                   </div>
                 </Link>
@@ -142,10 +142,10 @@ export default function TempleDetail() {
 
       {/* NEXT SHRINE */}
       <section className="bg-stone-900 py-20">
-        <div className="max-w-7xl mx-auto px-6 md:px-10 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div className="max-w-7xl mx-auto px-5 md:px-10 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div>
             <p className="text-[10px] uppercase tracking-widest text-stone-500 mb-1">Next Shrine</p>
-            <p className="font-['Cinzel'] font-bold text-white text-2xl">{nextTemple.name}</p>
+            <p className="font-['Philosopher'] font-bold text-white text-2xl">{nextTemple.name}</p>
             <p className="text-amber-600 text-xs uppercase tracking-widest mt-1">{nextTemple.deity}</p>
           </div>
           <Link to={`/temple/${nextTemple.id}`}

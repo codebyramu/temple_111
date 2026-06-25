@@ -198,7 +198,7 @@ function RiversPreview() {
           <Reveal>
             <div
               className="relative rounded-2xl overflow-hidden shadow-xl"
-              style={{ height: "520px" }}
+              style={{ height: "clamp(240px, 50vw, 520px)" }}
             >
               <motion.div
                 className="absolute inset-0 w-full"
@@ -367,7 +367,7 @@ export default function Home() {
           </motion.p>
 
           <motion.p
-            className="text-stone-200 text-lg md:text-xl font-light leading-relaxed max-w-xl mb-10 drop-shadow-md"
+            className="text-stone-200 text-base md:text-xl font-light leading-relaxed max-w-xs md:max-w-xl mb-8 md:mb-10 drop-shadow-md px-4 md:px-0"
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 1.1 }}
@@ -384,7 +384,7 @@ export default function Home() {
             <MagneticButton>
               <Link
                 to="/shrines"
-                className="bg-amber-600 text-white text-[11px] uppercase tracking-widest px-8 py-3.5 rounded-full hover:bg-amber-500 transition-colors font-semibold shadow-lg"
+                className="bg-amber-600 text-white text-[11px] uppercase tracking-widest px-7 py-3.5 rounded-full hover:bg-amber-500 transition-colors font-semibold shadow-lg"
               >
                 Explore Temples
               </Link>

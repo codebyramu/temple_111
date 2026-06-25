@@ -6,7 +6,7 @@ export default function SahasranamamPage() {
   return (
     <PageTransition>
       {/* HERO */}
-      <section className="relative min-h-[75dvh] flex items-end overflow-hidden">
+      <section className="relative min-h-[55dvh] md:min-h-[75dvh] flex items-end overflow-hidden">
         <Image3D
           src="/images/saint_scholar.jpg"
           alt="Sri Lalitha Sahasranamam"
@@ -16,14 +16,14 @@ export default function SahasranamamPage() {
           hoverScale={1}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-stone-950/95 via-stone-950/50 to-stone-950/20" />
-        <div className="relative z-10 max-w-7xl mx-auto w-full px-6 md:px-10 pb-16 md:pb-24">
+        <div className="relative z-10 max-w-7xl mx-auto w-full px-5 md:px-10 pb-10 md:pb-24">
           <div className="flex items-center gap-2 text-[10px] uppercase tracking-widest text-stone-400 mb-6">
             <Link to="/" className="hover:text-amber-400 transition-colors">Home</Link>
             <span>/</span>
             <span className="text-amber-400">Sri Lalitha Sahasranamam</span>
           </div>
           <SplitText
-            className="font-['Cinzel'] font-black text-white leading-tight mb-4"
+            className="font-['Philosopher'] font-black text-white leading-tight mb-4"
             style={{ fontSize: "clamp(2.5rem, 7vw, 6rem)" }}
           >
             Sri Lalitha Sahasranamam
@@ -35,11 +35,11 @@ export default function SahasranamamPage() {
       </section>
 
       {/* INTRO */}
-      <section className="bg-stone-50 py-24 md:py-32">
-        <div className="max-w-4xl mx-auto px-6 md:px-10">
+      <section className="bg-stone-50 py-12 md:py-32">
+        <div className="max-w-4xl mx-auto px-5 md:px-10">
           <Reveal>
             <SplitText
-              className="font-['Cinzel'] font-bold text-stone-900 leading-tight mb-10"
+              className="font-['Philosopher'] font-bold text-stone-900 leading-tight mb-10"
               style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}
             >
               What is Lalitha Sahasranamam?
@@ -66,11 +66,11 @@ export default function SahasranamamPage() {
       </section>
 
       {/* BENEFITS */}
-      <section className="bg-stone-100 py-24 md:py-32">
-        <div className="max-w-7xl mx-auto px-6 md:px-10">
+      <section className="bg-stone-100 py-12 md:py-32">
+        <div className="max-w-7xl mx-auto px-5 md:px-10">
           <Reveal>
             <SplitText
-              className="font-['Cinzel'] font-bold text-stone-900 mb-4"
+              className="font-['Philosopher'] font-bold text-stone-900 mb-4"
               style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}
             >
               Benefits of Chanting
@@ -97,7 +97,7 @@ export default function SahasranamamPage() {
               <motion.div key={b.title} variants={staggerItem} className="group relative bg-white/70 backdrop-blur-md rounded-2xl p-8 border border-stone-200/60 hover:border-amber-300 h-full hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:-translate-y-1 transition-all duration-300 overflow-hidden">
                 <div className="absolute -right-10 -top-10 w-32 h-32 bg-amber-50 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                 <div className="w-10 h-1 bg-amber-500 mb-6 rounded-full origin-left group-hover:scale-x-150 transition-transform duration-500" />
-                <h3 className="relative z-10 font-['Cinzel'] font-bold text-stone-900 text-lg mb-3">{b.title}</h3>
+                <h3 className="relative z-10 font-['Philosopher'] font-bold text-stone-900 text-lg mb-3">{b.title}</h3>
                 <p className="relative z-10 text-stone-600 text-sm md:text-base leading-relaxed">{b.desc}</p>
               </motion.div>
             ))}
@@ -106,10 +106,10 @@ export default function SahasranamamPage() {
       </section>
 
       {/* THE VILLAGE CONNECTION */}
-      <section className="bg-stone-50 py-24 md:py-32">
-        <div className="max-w-4xl mx-auto px-6 md:px-10">
+      <section className="bg-stone-50 py-12 md:py-32">
+        <div className="max-w-4xl mx-auto px-5 md:px-10">
           <Reveal>
-            <h2 className="font-['Cinzel'] font-bold text-stone-900 leading-tight mb-8"
+            <h2 className="font-['Philosopher'] font-bold text-stone-900 leading-tight mb-8"
               style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
               Central to Bhaskararajapuram
             </h2>
@@ -130,7 +130,7 @@ export default function SahasranamamPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-stone-900 py-20 px-6 md:px-10 text-center">
+      <section className="bg-stone-900 py-20 px-5 md:px-10 text-center">
         <Reveal>
           <p className="font-['Cormorant_Garamond'] italic text-stone-200 text-2xl mb-6 max-w-2xl mx-auto leading-relaxed">
             "Each name corresponds to a specific section of the Sri Chakra, revealing the path from gross consciousness to cosmic union."

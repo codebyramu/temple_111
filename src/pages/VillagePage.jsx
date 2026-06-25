@@ -14,40 +14,40 @@ export default function VillagePage() {
   return (
     <PageTransition>
       {/* HERO */}
-      <section className="relative min-h-[70dvh] flex items-end overflow-hidden">
+      <section className="relative min-h-[60dvh] md:min-h-[75dvh] flex items-end overflow-hidden">
         <Image3D
           src="/images/village_aerial.jpg"
           alt="Bhaskararajapuram village"
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full"
           imgClassName="w-full h-full object-cover"
           style={{ width: "100%", height: "100%" }}
           hoverScale={1}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-stone-950/90 via-stone-950/40 to-transparent" />
-        <div className="relative z-10 max-w-7xl mx-auto w-full px-6 md:px-10 pb-16 md:pb-24">
-          <div className="flex items-center gap-2 text-[10px] uppercase tracking-widest text-stone-400 mb-6">
+        <div className="relative z-10 max-w-7xl mx-auto w-full px-5 md:px-10 pb-10 md:pb-24">
+          <div className="flex items-center gap-2 text-[10px] uppercase tracking-widest text-stone-400 mb-4 md:mb-6">
             <Link to="/" className="hover:text-amber-400 transition-colors">Home</Link>
             <span>/</span>
             <span className="text-amber-400">The Village</span>
           </div>
-          <h1 className="font-['Cinzel'] font-black text-white leading-tight mb-4"
-            style={{ fontSize: "clamp(2.5rem, 7vw, 6rem)" }}>
+          <h1 className="font-['Philosopher'] font-black text-white leading-tight mb-3 md:mb-4"
+            style={{ fontSize: "clamp(2rem, 7vw, 6rem)" }}>
             Bhaskararajapuram
           </h1>
-          <p className="font-['Cormorant_Garamond'] italic text-amber-300 text-xl md:text-2xl max-w-xl">
+          <p className="font-['Cormorant_Garamond'] italic text-amber-300 text-lg md:text-2xl max-w-xl">
             A peaceful spiritual village where time moves to the rhythm of temple bells.
           </p>
         </div>
       </section>
 
       {/* INTRO */}
-      <section className="bg-stone-50 py-24 md:py-32">
-        <div className="max-w-7xl mx-auto px-6 md:px-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+      <section className="bg-stone-50 py-14 md:py-32">
+        <div className="max-w-7xl mx-auto px-5 md:px-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-start">
             <div>
               <Reveal>
-                <h2 className="font-['Cinzel'] font-bold text-stone-900 leading-tight mb-8"
-                  style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
+                <h2 className="font-['Philosopher'] font-bold text-stone-900 leading-tight mb-6"
+                  style={{ fontSize: "clamp(1.6rem, 3.5vw, 2.8rem)" }}>
                   The Land Itself is Sacred
                 </h2>
                 <div className="space-y-5 text-stone-600 text-base md:text-lg font-light leading-relaxed">
