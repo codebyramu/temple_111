@@ -22,12 +22,12 @@ export default function TrustPage() {
             <span>/</span>
             <span className="text-amber-400">Srinivas Rama Trust</span>
           </div>
-          <WipeReveal>
-            <h1 className="font-['Cinzel'] font-black text-white leading-tight mb-4"
-              style={{ fontSize: "clamp(2.5rem, 7vw, 6rem)" }}>
-              Srinivas Rama Trust
-            </h1>
-          </WipeReveal>
+          <SplitText
+            className="font-['Cinzel'] font-black text-white leading-tight mb-4"
+            style={{ fontSize: "clamp(2.5rem, 7vw, 6rem)" }}
+          >
+            Srinivas Rama Trust
+          </SplitText>
           <p className="font-['Cormorant_Garamond'] italic text-amber-300 text-xl md:text-2xl max-w-2xl">
             Preserving the spiritual and cultural heritage of Bhaskararajapuram for future generations.
           </p>
@@ -38,10 +38,12 @@ export default function TrustPage() {
       <section className="bg-stone-50 py-24 md:py-32">
         <div className="max-w-4xl mx-auto px-6 md:px-10">
           <Reveal>
-            <h2 className="font-['Cinzel'] font-bold text-stone-900 leading-tight mb-8"
-              style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
+            <SplitText
+              className="font-['Cinzel'] font-bold text-stone-900 leading-tight mb-10"
+              style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}
+            >
               About the Trust
-            </h2>
+            </SplitText>
           </Reveal>
           <div className="space-y-6 text-stone-600 text-base md:text-lg font-light leading-relaxed">
             <Reveal delay={0.1}>
@@ -62,9 +64,12 @@ export default function TrustPage() {
       <section className="bg-stone-100 py-24 md:py-32">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <Reveal>
-            <h2 className="font-['Cinzel'] font-bold text-stone-900 mb-10" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
+            <SplitText
+              className="font-['Cinzel'] font-bold text-stone-900 mb-12 text-center"
+              style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}
+            >
               Opportunities to Serve
-            </h2>
+            </SplitText>
           </Reveal>
           <motion.div
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
@@ -81,8 +86,8 @@ export default function TrustPage() {
               { title: "Pilgrimage Assistance", desc: "Volunteer as guides or support staff for pilgrims visiting the temple complex and memorials." },
               { title: "Environmental Initiatives", desc: "Join efforts for cleaning temple surroundings, planting sacred trees, and promoting eco-friendly practices." },
             ].map((o, i) => (
-              <motion.div key={o.title} variants={staggerItem} className="bg-white rounded-xl p-8 border border-stone-200 hover:shadow-md transition-shadow">
-                <div className="w-8 h-px bg-amber-600 mb-4" />
+              <motion.div key={o.title} variants={staggerItem} className="group relative bg-white/60 backdrop-blur-md rounded-2xl p-8 border border-stone-200/50 hover:bg-white hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:-translate-y-1 transition-all duration-300">
+                <div className="w-10 h-1 bg-amber-500 mb-6 rounded-full origin-left group-hover:scale-x-150 transition-transform duration-500" />
                 <h3 className="font-['Cinzel'] font-bold text-stone-900 text-lg mb-3">{o.title}</h3>
                 <p className="text-stone-600 text-sm leading-relaxed">{o.desc}</p>
               </motion.div>

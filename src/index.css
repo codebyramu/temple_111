@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
 /* ── Global resets ── */
@@ -8,39 +8,139 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
 }
 
 body {
-  font-family: 'Montserrat', system-ui, sans-serif;
-  background: #f7f5f2;
+  background-color: #f5f5f4;
   color: #1c1917;
   overflow-x: hidden;
-  cursor: none;
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.6;
 }
 
-/* ── Hide default cursor everywhere so our magnetic one shows ── */
-* { cursor: none !important; }
-
-/* ── Smooth font rendering for Cinzel on all elements ── */
+/* ── Premium headings font ── */
 h1, h2, h3, h4, h5, h6 {
+  font-family: 'Philosopher', serif;
   font-kerning: normal;
   text-rendering: optimizeLegibility;
+  line-height: 1.15;
 }
 
-/* ── Prevent any text from breaking mid-word unless truly necessary ── */
+/* ── Break words safely ── */
 h1, h2, h3 {
-  word-break: keep-all;
+  word-break: break-word;
   overflow-wrap: break-word;
-  hyphens: none;
+  hyphens: auto;
+}
+
+/* ── Cursor override ── */
+@media (hover: hover) and (pointer: fine) {
+  * { cursor: none !important; }
+  body { cursor: none; }
 }
 
 /* ── Selection color ── */
-::selection {
-  background: #b45309;
-  color: #fff;
-}
+::selection { background: #b45309; color: #fff; }
 
 /* ── Scrollbar ── */
-::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar { width: 3px; }
 ::-webkit-scrollbar-track { background: #f7f5f2; }
 ::-webkit-scrollbar-thumb { background: #b45309; border-radius: 4px; }
+
+/* ──────────────────────────────────────
+   ANIMATIONS
+────────────────────────────────────── */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+@keyframes breathe {
+  0%, 100% { opacity: 0.85; letter-spacing: 0.3em; }
+  50%       { opacity: 1;    letter-spacing: 0.4em; }
+}
+
+@keyframes float-up {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { text-shadow: 0 0 12px rgba(220,168,23,0.3); }
+  50%       { text-shadow: 0 0 30px rgba(220,168,23,0.8), 0 0 60px rgba(220,168,23,0.3); }
+}
+
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10%       { transform: translate(-2%, -3%); }
+  30%       { transform: translate(3%, 2%); }
+  50%       { transform: translate(-1%, 4%); }
+  70%       { transform: translate(4%, -2%); }
+  90%       { transform: translate(-3%, 1%); }
+}
+
+/* ── Shimmer gradient text ── */
+.animate-shimmer {
+  background: linear-gradient(
+    100deg,
+    #f0d060 0%,
+    #fffff0 30%,
+    #dca817 50%,
+    #fffff0 70%,
+    #e1b840 100%
+  );
+  background-size: 300% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shimmer 5s linear infinite;
+}
+
+/* ── Breathing text ── */
+.animate-breathe {
+  display: inline-block;
+  animation: breathe 3.5s ease-in-out infinite;
+}
+
+/* ── Glowing text ── */
+.animate-glow {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+/* ── Floating element ── */
+.animate-float {
+  animation: float-up 4s ease-in-out infinite;
+}
+
+/* ──────────────────────────────────────
+   MOBILE UTILITIES
+────────────────────────────────────── */
+.section-pad {
+  padding-top: clamp(3.5rem, 10vw, 8rem);
+  padding-bottom: clamp(3.5rem, 10vw, 8rem);
+}
+
+.container-pad {
+  padding-left: clamp(1.25rem, 5vw, 2.5rem);
+  padding-right: clamp(1.25rem, 5vw, 2.5rem);
+}
+
+/* ──────────────────────────────────────
+   PREMIUM CARD
+────────────────────────────────────── */
+.card-premium {
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.8);
+  border-radius: 1.25rem;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.04), 0 1px 4px rgba(0,0,0,0.06);
+  transition: transform 0.35s cubic-bezier(0.16,1,0.3,1),
+              box-shadow 0.35s cubic-bezier(0.16,1,0.3,1);
+}
+
+.card-premium:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.1), 0 4px 12px rgba(0,0,0,0.06);
+}

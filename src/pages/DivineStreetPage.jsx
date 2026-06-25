@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Reveal, WipeReveal, PageTransition, Image3D, staggerContainer, staggerItem } from "../components/shared";
+import { Reveal, WipeReveal, PageTransition, Image3D, SplitText, staggerContainer, staggerItem } from "../components/shared";
 import { TEMPLES } from "../data/content";
 
 export default function DivineStreetPage() {
@@ -23,12 +23,12 @@ export default function DivineStreetPage() {
             <span>/</span>
             <span className="text-amber-400">Divine Street</span>
           </div>
-          <WipeReveal>
-            <h1 className="font-['Cinzel'] font-black text-white leading-tight mb-4"
-              style={{ fontSize: "clamp(2.5rem, 7vw, 6rem)" }}>
-              Divine Street
-            </h1>
-          </WipeReveal>
+          <SplitText
+            className="font-['Cinzel'] font-black text-white leading-tight mb-4"
+            style={{ fontSize: "clamp(2.5rem, 7vw, 6rem)" }}
+          >
+            Divine Street
+          </SplitText>
           <p className="font-['Cormorant_Garamond'] italic text-amber-300 text-xl md:text-2xl max-w-2xl">
             The Sacred Trail of Bhaskararajapuram: A Journey Through Temples, Tradition, and Tranquility.
           </p>
@@ -39,10 +39,12 @@ export default function DivineStreetPage() {
       <section className="bg-stone-50 py-24 md:py-32">
         <div className="max-w-4xl mx-auto px-6 md:px-10">
           <Reveal>
-            <h2 className="font-['Cinzel'] font-bold text-stone-900 leading-tight mb-8"
-              style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
+            <SplitText
+              className="font-['Cinzel'] font-bold text-stone-900 leading-tight mb-10"
+              style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}
+            >
               What is the Divine Street?
-            </h2>
+            </SplitText>
           </Reveal>
           <div className="space-y-6 text-stone-600 text-base md:text-lg font-light leading-relaxed">
             <Reveal delay={0.1}>
@@ -63,21 +65,26 @@ export default function DivineStreetPage() {
       <section className="bg-stone-100 py-24 md:py-32">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <Reveal>
-            <h2 className="font-['Cinzel'] font-bold text-stone-900 mb-10" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
+            <SplitText
+              className="font-['Cinzel'] font-bold text-stone-900 mb-12"
+              style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}
+            >
               Sacred Landmarks
-            </h2>
+            </SplitText>
           </Reveal>
           <div className="space-y-6">
             {TEMPLES.map((temple, i) => (
               <Reveal key={temple.id} delay={i * 0.1}>
-                <div className="bg-white rounded-xl p-8 border border-stone-200 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-                  <div>
-                    <h3 className="font-['Cinzel'] font-bold text-stone-900 text-xl md:text-2xl mb-2">{temple.name}</h3>
-                    <p className="text-[10px] uppercase tracking-widest text-amber-700 mb-3">{temple.deity}</p>
-                    <p className="text-stone-600 text-sm md:text-base leading-relaxed max-w-2xl">{temple.desc}</p>
+                <div className="group relative bg-white rounded-2xl p-8 border border-stone-100 hover:border-amber-200 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-400 overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-r from-amber-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                  <div className="relative z-10">
+                    <h3 className="font-['Cinzel'] font-bold text-stone-900 text-xl md:text-2xl mb-2 group-hover:text-amber-700 transition-colors">{temple.name}</h3>
+                    <p className="text-[10px] uppercase tracking-widest text-amber-600 mb-4">{temple.deity}</p>
+                    <p className="text-stone-600 text-sm md:text-base leading-relaxed max-w-3xl">{temple.desc}</p>
                   </div>
-                  <Link to={`/temple/${temple.id}`} className="shrink-0 text-[11px] uppercase tracking-widest font-semibold text-amber-700 hover:text-amber-900 transition-colors">
-                    Explore Shrine →
+                  <Link to={`/temple/${temple.id}`} className="relative z-10 shrink-0 text-[11px] uppercase tracking-widest font-bold text-amber-700 bg-amber-50 hover:bg-amber-100 px-6 py-3 rounded-full transition-colors flex items-center gap-2 group-hover:pr-4">
+                    Explore
+                    <motion.span animate={{ x: [0, 3, 0] }} transition={{ repeat: Infinity, duration: 1.5 }}>→</motion.span>
                   </Link>
                 </div>
               </Reveal>

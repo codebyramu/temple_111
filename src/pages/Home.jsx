@@ -1,10 +1,6 @@
 import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import {
-  motion,
-  useScroll,
-  useTransform,
-} from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import {
   Reveal,
   WipeReveal,
@@ -12,6 +8,8 @@ import {
   AnimatedCounter,
   MagneticButton,
   Float,
+  PageTransition,
+  SplitText,
   staggerContainer,
   staggerItem,
 } from "../components/shared";
@@ -24,26 +22,37 @@ function HoverRow({ word, i }) {
   const [hovered, setHovered] = useState(false);
   return (
     <motion.div
-      className="border-b border-stone-200 last:border-0 px-6 md:px-10 py-6 flex items-center cursor-pointer relative"
+      className="border-b border-stone-200 last:border-0 px-5 md:px-10 py-5 md:py-7 flex items-center cursor-pointer relative overflow-hidden"
       initial={{ x: i % 2 === 0 ? -60 : 60, opacity: 0 }}
       whileInView={{ x: 0, opacity: 1 }}
-      viewport={{ once: true, amount: 0.6 }}
+      viewport={{ once: true, amount: 0.5 }}
       transition={{ duration: 1, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      onTouchStart={() => setHovered(true)}
+      onTouchEnd={() => setTimeout(() => setHovered(false), 600)}
       data-cursor-grow
     >
-      {/* Background Fill */}
+      {/* Background Fill with Wavy Paint Drop Edge */}
       <motion.div
-        className="absolute inset-0 bg-amber-400 origin-left"
-        initial={{ scaleX: 0 }}
-        animate={{ scaleX: hovered ? 1 : 0 }}
-        transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-      />
-      {/* Text overlay */}
+        className="absolute top-0 bottom-0 left-0 bg-[#dca817]"
+        initial={{ width: "0%" }}
+        animate={{ width: hovered ? "100%" : "0%" }}
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+      >
+        <svg
+          className="absolute right-[-39px] top-0 h-full w-[40px] text-[#dca817]"
+          preserveAspectRatio="none"
+          viewBox="0 0 40 100"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <path d="M0,0 C30,10 40,30 15,50 C-10,70 20,90 0,100 Z" />
+        </svg>
+      </motion.div>
       <span
-        className="relative z-10 mix-blend-multiply font-['Cinzel'] font-black text-stone-900 pointer-events-none"
-        style={{ fontSize: "clamp(3.5rem, 9vw, 8rem)" }}
+        className="relative z-10 mix-blend-multiply font-['Philosopher'] font-bold text-stone-900 pointer-events-none leading-none"
+        style={{ fontSize: "clamp(2.5rem, 8vw, 8rem)" }}
       >
         {word}
       </span>
@@ -76,27 +85,52 @@ function ShrinesTrack() {
   });
   const x = useTransform(scrollYProgress, [0, 1], ["2%", "-58%"]);
 
+  // On mobile show a simple scrollable card row instead of the sticky horizontal scroll
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+
   return (
     <section id="shrines" className="bg-stone-100">
-      <div className="max-w-7xl mx-auto px-6 md:px-10 pt-24 pb-10">
+      <div className="max-w-7xl mx-auto px-5 md:px-10 pt-20 pb-8 md:pt-24 md:pb-10">
         <Reveal>
-          <WipeReveal>
-            <h2
-              className="font-['Cinzel'] font-bold text-stone-900 leading-tight"
-              style={{ fontSize: "clamp(2.2rem, 5vw, 4rem)" }}
-            >
-              Four Shrines. One Sacred Truth.
-            </h2>
-          </WipeReveal>
-          <p className="text-stone-500 mt-3 text-base font-light">
+          <SplitText
+            className="font-['Philosopher'] font-bold text-stone-900 leading-tight"
+            style={{ fontSize: "clamp(1.8rem, 5vw, 4rem)" }}
+          >
+            Four Shrines. One Sacred Truth.
+          </SplitText>
+          <p className="text-stone-500 mt-3 text-sm md:text-base font-light">
             Click any shrine to enter its story.
           </p>
         </Reveal>
       </div>
 
-      <div ref={wrapRef} style={{ height: "260vh" }}>
+      {/* Mobile: simple 2-col grid */}
+      <div className="md:hidden px-5 pb-14 grid grid-cols-2 gap-4">
+        {TEMPLES.map((t, i) => (
+          <Link key={t.id} to={`/temple/${t.id}`} className="block">
+            <motion.div
+              className="relative rounded-2xl overflow-hidden shadow-md"
+              style={{ height: "220px" }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.08, duration: 0.7 }}
+            >
+              <img src={t.img} alt={t.name} className="w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-stone-950/90 via-stone-950/20 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-3">
+                <p className="text-[9px] uppercase tracking-widest text-amber-400 mb-0.5">{t.deity}</p>
+                <h3 className="font-['Philosopher'] font-bold text-white text-sm leading-tight">{t.name}</h3>
+              </div>
+            </motion.div>
+          </Link>
+        ))}
+      </div>
+
+      {/* Desktop: horizontal sticky scroll */}
+      <div ref={wrapRef} className="hidden md:block" style={{ height: "260vh" }}>
         <div className="sticky top-0 min-h-[100dvh] flex items-center overflow-hidden">
-          <motion.div className="flex gap-6 px-6 md:px-10" style={{ x }}>
+          <motion.div className="flex gap-6 px-10" style={{ x }}>
             {TEMPLES.map((t, i) => (
               <Link
                 key={t.id}
@@ -112,7 +146,6 @@ function ShrinesTrack() {
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  {/* 3D image inside the card */}
                   <Image3D
                     src={t.img}
                     alt={t.name}
@@ -120,33 +153,22 @@ function ShrinesTrack() {
                     imgClassName="transition-transform duration-700 group-hover:scale-105"
                     style={{ width: "100%", height: "100%" }}
                   >
-                    {/* Gradient */}
                     <div className="absolute inset-0 bg-gradient-to-t from-stone-950/92 via-stone-950/25 to-transparent pointer-events-none" />
-
-                    {/* Roman numeral */}
                     <div className="absolute top-5 left-5 font-['Cinzel'] text-2xl font-black text-white/20 pointer-events-none">
                       {t.num}
                     </div>
-
-                    {/* Explore badge */}
                     <div className="absolute top-5 right-5 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-3 py-1 text-[10px] uppercase tracking-widest text-white opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-1 group-hover:translate-y-0 whitespace-nowrap pointer-events-none">
                       Explore →
                     </div>
-
-                    {/* Bottom info */}
                     <div className="absolute bottom-0 left-0 right-0 p-6 pointer-events-none">
-                      <p className="text-[10px] uppercase tracking-widest text-amber-400 mb-1">
-                        {t.deity}
-                      </p>
+                      <p className="text-[10px] uppercase tracking-widest text-amber-400 mb-1">{t.deity}</p>
                       <h3
-                        className="font-['Cinzel'] font-bold text-white leading-tight mb-2"
+                        className="font-['Philosopher'] font-bold text-white leading-tight mb-2"
                         style={{ fontSize: "clamp(1.1rem, 2.2vw, 1.6rem)" }}
                       >
                         {t.name}
                       </h3>
-                      <p className="text-stone-300 text-xs leading-relaxed font-light line-clamp-2">
-                        {t.desc}
-                      </p>
+                      <p className="text-stone-300 text-xs leading-relaxed font-light line-clamp-2">{t.desc}</p>
                     </div>
                   </Image3D>
                 </motion.div>
@@ -204,16 +226,12 @@ function RiversPreview() {
           {/* Rivers list */}
           <div>
             <Reveal>
-              <WipeReveal>
-                <h2
-                  className="font-['Cinzel'] font-bold text-stone-900 leading-tight mb-8"
-                  style={{ fontSize: "clamp(2rem, 4.5vw, 3.5rem)" }}
-                >
-                  Three Rivers.
-                  <br />
-                  <span className="text-amber-700">One Sacred Land.</span>
-                </h2>
-              </WipeReveal>
+              <SplitText
+                className="font-['Philosopher'] font-bold text-stone-900 leading-tight mb-8"
+                style={{ fontSize: "clamp(2rem, 4.5vw, 3.5rem)" }}
+              >
+                Three Rivers. One Sacred Land.
+              </SplitText>
             </Reveal>
 
             <motion.div
@@ -284,18 +302,22 @@ export default function Home() {
   const textY = useTransform(heroScroll, [0, 1], ["0%", "38%"]);
   const heroOpacity = useTransform(heroScroll, [0, 0.7], [1, 0]);
 
-  const words = ["SPIRIT", "IN", "STONE"];
+  // Global scroll for video parallax
+  const { scrollY } = useScroll();
+  const videoY = useTransform(scrollY, [0, 1000], [0, 300]);
+
+
 
   return (
     <PageTransition>
       {/* ── HERO ── */}
-      <section ref={heroRef} className="relative min-h-[100dvh] flex items-end overflow-hidden bg-stone-100">
+      <section ref={heroRef} className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden bg-stone-950">
         <motion.div
           className="absolute inset-0 z-0 overflow-hidden"
           initial={{ scale: 1.1 }}
           animate={{ scale: 1 }}
           transition={{ duration: 1.8, ease: "easeOut" }}
-          style={{ y: useTransform(useScroll().scrollY, [0, 1000], [0, 300]) }}
+          style={{ y: videoY }}
         >
           <video
             autoPlay
@@ -305,64 +327,71 @@ export default function Home() {
             className="w-full h-full object-cover"
             src="/videos/hero_bg.mp4"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-stone-100 via-stone-100/45 to-transparent" />
+          <div className="absolute inset-0 bg-stone-950/30" />
         </motion.div>
 
         <motion.div
-          className="relative z-10 max-w-7xl mx-auto w-full px-6 md:px-10 pb-16 md:pb-24"
+          className="relative z-10 flex flex-col items-center text-center w-full px-6 md:px-10"
           style={{ y: textY, opacity: heroOpacity }}
         >
-          <div className="overflow-hidden mb-6">
+          <div className="overflow-visible mb-4">
             <motion.p
-              className="text-[10px] uppercase tracking-[0.4em] text-amber-700 font-semibold"
-              initial={{ y: "100%" }}
-              animate={{ y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
+              className="text-[12px] uppercase tracking-[0.3em] text-amber-400 font-semibold animate-breathe"
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
             >
-              Bhaskararajapuram · Tamil Nadu
+              Welcome to
             </motion.p>
           </div>
 
-          {words.map((w, i) => (
-            <div key={w} className="overflow-hidden">
-              <motion.span
-                className="block font-['Cinzel'] font-black leading-none tracking-tight text-stone-900"
-                style={{ fontSize: "clamp(3.5rem, 9.5vw, 9.5rem)" }}
-                initial={{ y: "110%" }}
-                animate={{ y: 0 }}
-                transition={{ duration: 1.1, delay: 0.4 + i * 0.13, ease: [0.16, 1, 0.3, 1] }}
-              >
-                {w}
-              </motion.span>
-            </div>
-          ))}
+          <div className="overflow-visible">
+            <motion.h1
+              className="font-['Philosopher'] font-black leading-none tracking-tight animate-shimmer mb-2 drop-shadow-2xl"
+              style={{ fontSize: "clamp(3rem, 8vw, 8rem)", textShadow: "0 10px 30px rgba(0,0,0,0.5)" }}
+              initial={{ y: 30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 1.1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            >
+              Bhaskararajapuram
+            </motion.h1>
+          </div>
 
           <motion.p
-            className="text-stone-600 text-lg md:text-xl font-light leading-relaxed max-w-md mt-7"
+            className="text-[12px] uppercase tracking-[0.4em] text-stone-300 font-semibold mb-8"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.9, delay: 1 }}
+          >
+            · Tamil Nadu
+          </motion.p>
+
+          <motion.p
+            className="text-stone-200 text-lg md:text-xl font-light leading-relaxed max-w-xl mb-10 drop-shadow-md"
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.95 }}
+            transition={{ duration: 0.9, delay: 1.1 }}
           >
             A village where ancient wisdom breathes — through stone, river, and sacred flame.
           </motion.p>
 
           <motion.div
-            className="mt-10 flex items-center gap-6 flex-wrap"
+            className="flex items-center gap-6 flex-wrap justify-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 1.2 }}
+            transition={{ delay: 1.3 }}
           >
             <MagneticButton>
               <Link
                 to="/shrines"
-                className="bg-amber-700 text-white text-[11px] uppercase tracking-widest px-7 py-3 rounded-full hover:bg-amber-800 transition-colors font-semibold"
+                className="bg-amber-600 text-white text-[11px] uppercase tracking-widest px-8 py-3.5 rounded-full hover:bg-amber-500 transition-colors font-semibold shadow-lg"
               >
                 Explore Temples
               </Link>
             </MagneticButton>
             <Link
               to="/village"
-              className="text-[11px] uppercase tracking-widest text-stone-700 hover:text-amber-700 transition-colors font-semibold flex items-center gap-2"
+              className="text-[11px] uppercase tracking-widest text-stone-200 hover:text-amber-400 transition-colors font-semibold flex items-center gap-2 drop-shadow-sm"
             >
               Our Story
               <motion.span
@@ -392,21 +421,21 @@ export default function Home() {
       </section>
 
       {/* ── VILLAGE INTRO ── */}
-      <section id="village" className="bg-stone-50 py-24 md:py-32">
-        <div className="max-w-7xl mx-auto px-6 md:px-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <section id="village" className="bg-stone-50 py-16 md:py-32">
+        <div className="max-w-7xl mx-auto px-5 md:px-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-center">
             <Reveal>
               <WipeReveal>
                 <h2
-                  className="font-['Cinzel'] font-bold text-stone-900 leading-tight mb-6"
-                  style={{ fontSize: "clamp(2rem, 4.5vw, 3.75rem)" }}
+                  className="font-['Philosopher'] font-bold text-stone-900 leading-tight mb-5 md:mb-6"
+                  style={{ fontSize: "clamp(1.8rem, 4.5vw, 3.75rem)" }}
                 >
                   A Place Where
                   <br />
                   <em className="text-amber-700 not-italic">Divinity Dwells</em>
                 </h2>
               </WipeReveal>
-              <div className="space-y-4 text-stone-600 text-base font-light leading-relaxed">
+              <div className="space-y-4 text-stone-600 text-sm md:text-base font-light leading-relaxed">
                 <p>
                   Bhaskararajapuram is a peaceful spiritual village near Mayiladuthurai, Tamil Nadu. Its name carries the legacy of the great saint Bhaskararaya — a scholar whose presence made this land permanently sacred.
                 </p>
@@ -416,7 +445,7 @@ export default function Home() {
               </div>
 
               {/* Animated stats */}
-              <div className="grid grid-cols-3 gap-5 mt-10 pt-8 border-t border-stone-200">
+              <div className="grid grid-cols-3 gap-4 md:gap-5 mt-8 md:mt-10 pt-6 md:pt-8 border-t border-stone-200">
                 {[
                   { target: 4, suffix: "", label: "Sacred Temples" },
                   { target: 3, suffix: "", label: "Holy Rivers" },
@@ -424,19 +453,19 @@ export default function Home() {
                 ].map((s) => (
                   <div key={s.label}>
                     <div
-                      className="font-['Cinzel'] font-black text-amber-700 leading-none"
-                      style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)" }}
+                      className="font-['Philosopher'] font-black text-amber-700 leading-none"
+                      style={{ fontSize: "clamp(1.8rem, 3.5vw, 3rem)" }}
                     >
                       <AnimatedCounter target={s.target} suffix={s.suffix} />
                     </div>
-                    <div className="text-[10px] uppercase tracking-widest text-stone-500 mt-1">
+                    <div className="text-[9px] md:text-[10px] uppercase tracking-widest text-stone-500 mt-1">
                       {s.label}
                     </div>
                   </div>
                 ))}
               </div>
 
-              <MagneticButton className="mt-8">
+              <MagneticButton className="mt-6 md:mt-8">
                 <Link
                   to="/village"
                   className="inline-flex items-center gap-2 text-[11px] uppercase tracking-widest text-amber-700 hover:text-amber-900 font-semibold transition-colors"
@@ -453,14 +482,14 @@ export default function Home() {
             </Reveal>
 
             <Reveal delay={0.15}>
-              <div className="relative">
+              <div className="relative mt-4 md:mt-0">
                 <Float amplitude={6} duration={5}>
                   <div className="absolute -bottom-4 -right-4 w-full h-full rounded-2xl bg-amber-100" />
                   <Image3D
                     src="/images/village_aerial.jpg"
                     alt="Village"
                     className="relative rounded-2xl overflow-hidden shadow-xl"
-                    style={{ height: "460px" }}
+                    style={{ height: "clamp(280px, 45vw, 460px)" }}
                   />
                 </Float>
               </div>
@@ -473,9 +502,9 @@ export default function Home() {
       <FillWordsSection />
 
       {/* ── SAINT TEASER ── */}
-      <section className="bg-stone-50 py-24 md:py-32">
-        <div className="max-w-7xl mx-auto px-6 md:px-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <section className="bg-stone-50 py-16 md:py-32">
+        <div className="max-w-7xl mx-auto px-5 md:px-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-center">
             <Reveal delay={0.1}>
               <div className="relative">
                 <Float amplitude={5} duration={6} delay={0.5}>
@@ -484,10 +513,10 @@ export default function Home() {
                     src="/images/saint_scholar.jpg"
                     alt="Shri Bhaskararaya"
                     className="relative rounded-2xl overflow-hidden shadow-xl"
-                    style={{ height: "520px" }}
+                    style={{ height: "clamp(280px, 50vw, 520px)" }}
                   >
-                    <div className="absolute bottom-6 left-6 right-6 bg-stone-50/90 backdrop-blur-sm rounded-xl p-4 border border-stone-200 pointer-events-none">
-                      <p className="font-['Cormorant_Garamond'] text-lg italic text-stone-700 leading-snug">
+                    <div className="absolute bottom-4 md:bottom-6 left-4 md:left-6 right-4 md:right-6 bg-stone-50/90 backdrop-blur-sm rounded-xl p-3 md:p-4 border border-stone-200 pointer-events-none">
+                      <p className="font-['Cormorant_Garamond'] text-base md:text-lg italic text-stone-700 leading-snug">
                         "His teachings made this land permanently sacred."
                       </p>
                       <p className="text-[10px] uppercase tracking-widest text-amber-700 mt-1">
@@ -502,16 +531,16 @@ export default function Home() {
             <Reveal>
               <WipeReveal>
                 <h2
-                  className="font-['Cinzel'] font-bold text-stone-900 leading-tight mb-3"
-                  style={{ fontSize: "clamp(2rem, 4.5vw, 3.75rem)" }}
+                  className="font-['Philosopher'] font-bold text-stone-900 leading-tight mb-3"
+                  style={{ fontSize: "clamp(1.8rem, 4.5vw, 3.75rem)" }}
                 >
                   Shri Bhaskararaya
                 </h2>
               </WipeReveal>
-              <p className="text-amber-700 text-sm uppercase tracking-widest font-semibold mb-6">
-                The Great Saint & Scholar
+              <p className="text-amber-700 text-xs md:text-sm uppercase tracking-widest font-semibold mb-5 md:mb-6">
+                The Great Saint &amp; Scholar
               </p>
-              <div className="space-y-4 text-stone-600 text-base font-light leading-relaxed">
+              <div className="space-y-4 text-stone-600 text-sm md:text-base font-light leading-relaxed">
                 <p>
                   Born in Hyderabad, mastered the Vedas in Kashi. Bhaskararaya became India's foremost scholar of Srividya — the sacred science of Goddess Lalita worship.
                 </p>
@@ -519,7 +548,7 @@ export default function Home() {
                   He authored more than 40 Sanskrit works that remain authoritative texts to this day. His presence transformed Bhaskararajapuram into an eternal center of divine knowledge.
                 </p>
               </div>
-              <MagneticButton className="mt-8">
+              <MagneticButton className="mt-6 md:mt-8">
                 <Link
                   to="/saint"
                   className="inline-flex items-center gap-2 text-[11px] uppercase tracking-widest text-amber-700 hover:text-amber-900 font-semibold transition-colors"
@@ -539,29 +568,28 @@ export default function Home() {
       <RiversPreview />
 
       {/* ── CLOSING QUOTE ── */}
-      <section className="bg-stone-900 py-28 md:py-44 px-6 md:px-10 overflow-hidden relative">
-        {/* Decorative glow */}
+      <section className="bg-stone-900 py-20 md:py-44 px-5 md:px-10 overflow-hidden relative">
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <motion.div
-            className="w-96 h-96 rounded-full"
+            className="w-64 md:w-96 h-64 md:h-96 rounded-full"
             style={{ background: "radial-gradient(circle, rgba(180,83,9,0.15) 0%, transparent 70%)" }}
             animate={{ scale: [1, 1.2, 1] }}
             transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
           />
         </div>
 
-        <div className="max-w-4xl mx-auto text-center relative z-10">
+        <div className="max-w-3xl md:max-w-4xl mx-auto text-center relative z-10">
           <Reveal>
             <Float amplitude={4} duration={5}>
               <p
-                className="font-['Cormorant_Garamond'] italic text-stone-100 leading-snug mb-8"
-                style={{ fontSize: "clamp(1.6rem, 4.5vw, 3.5rem)" }}
+                className="font-['Cormorant_Garamond'] italic text-stone-100 leading-snug mb-6 md:mb-8"
+                style={{ fontSize: "clamp(1.4rem, 4.5vw, 3.5rem)" }}
               >
                 "For devotees, Bhaskararajapuram is a place of peace, prayer, and wisdom."
               </p>
             </Float>
             <motion.div
-              className="w-10 h-px bg-amber-600 mx-auto mb-5"
+              className="w-10 h-px bg-amber-600 mx-auto mb-4 md:mb-5"
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
               viewport={{ once: true }}

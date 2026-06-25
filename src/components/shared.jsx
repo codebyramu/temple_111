@@ -12,9 +12,10 @@ import {
 /* ─────────────────────────────────────────
    SCROLL TO TOP on route change
 ───────────────────────────────────────── */
+/* ─────────────────────────────────────────
+   SCROLL TO TOP on route change
+───────────────────────────────────────── */
 export function ScrollToTop() {
-  const { pathname } = useLocation();
-  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
   return null;
 }
 
@@ -92,6 +93,10 @@ export function MagneticCursor() {
    PAGE TRANSITION WRAPPER
 ───────────────────────────────────────── */
 export function PageTransition({ children }) {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -111,10 +116,10 @@ export function Reveal({ children, delay = 0, className = "" }) {
   return (
     <motion.div
       className={className}
-      initial={{ opacity: 0, y: 28 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
+      whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
       viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.75, delay, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 1.2, delay, ease: [0.16, 1, 0.3, 1] }}
     >
       {children}
     </motion.div>
@@ -128,12 +133,66 @@ export function WipeReveal({ children, delay = 0, className = "" }) {
   return (
     <motion.div
       className={className}
-      initial={{ clipPath: "inset(0 100% 0 0)", opacity: 0 }}
-      whileInView={{ clipPath: "inset(0 0% 0 0)", opacity: 1 }}
+      initial={{ clipPath: "inset(0 100% 0 0)", opacity: 0, filter: "blur(10px)", x: -20 }}
+      whileInView={{ clipPath: "inset(0 0% 0 0)", opacity: 1, filter: "blur(0px)", x: 0 }}
       viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 0.9, delay, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 1.4, delay, ease: [0.16, 1, 0.3, 1] }}
     >
       {children}
+    </motion.div>
+  );
+}
+
+/* ─────────────────────────────────────────
+   SPLIT TEXT REVEAL (Character by Character)
+───────────────────────────────────────── */
+export function SplitText({ children, delay = 0, className = "" }) {
+  if (typeof children !== "string") return <div className={className}>{children}</div>;
+  
+  const words = children.split(" ");
+  
+  const container = {
+    hidden: { opacity: 0 },
+    visible: (i = 1) => ({
+      opacity: 1,
+      transition: { staggerChildren: 0.04, delayChildren: delay * i },
+    }),
+  };
+
+  const child = {
+    visible: {
+      opacity: 1,
+      y: 0,
+      rotateX: 0,
+      filter: "blur(0px)",
+      transition: { type: "spring", damping: 12, stiffness: 100 },
+    },
+    hidden: {
+      opacity: 0,
+      y: 20,
+      rotateX: -90,
+      filter: "blur(10px)",
+    },
+  };
+
+  return (
+    <motion.div
+      style={{ display: "flex", flexWrap: "wrap", perspective: "1000px" }}
+      variants={container}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      className={className}
+    >
+      {words.map((word, idx) => (
+        <span key={idx} style={{ display: "inline-block", marginRight: "0.25em", whiteSpace: "nowrap" }}>
+          {Array.from(word).map((letter, i) => (
+            <motion.span key={i} variants={child} style={{ display: "inline-block" }}>
+              {letter}
+            </motion.span>
+          ))}
+        </span>
+      ))}
     </motion.div>
   );
 }

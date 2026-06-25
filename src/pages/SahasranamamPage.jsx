@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Reveal, WipeReveal, PageTransition, Image3D, staggerContainer, staggerItem } from "../components/shared";
+import { Reveal, WipeReveal, PageTransition, Image3D, SplitText, staggerContainer, staggerItem } from "../components/shared";
 
 export default function SahasranamamPage() {
   return (
@@ -22,12 +22,12 @@ export default function SahasranamamPage() {
             <span>/</span>
             <span className="text-amber-400">Sri Lalitha Sahasranamam</span>
           </div>
-          <WipeReveal>
-            <h1 className="font-['Cinzel'] font-black text-white leading-tight mb-4"
-              style={{ fontSize: "clamp(2.5rem, 7vw, 6rem)" }}>
-              Sri Lalitha Sahasranamam
-            </h1>
-          </WipeReveal>
+          <SplitText
+            className="font-['Cinzel'] font-black text-white leading-tight mb-4"
+            style={{ fontSize: "clamp(2.5rem, 7vw, 6rem)" }}
+          >
+            Sri Lalitha Sahasranamam
+          </SplitText>
           <p className="font-['Cormorant_Garamond'] italic text-amber-300 text-xl md:text-2xl max-w-2xl">
             A Thousand Names of the Divine Mother — The Essence of Shakta Worship.
           </p>
@@ -38,10 +38,12 @@ export default function SahasranamamPage() {
       <section className="bg-stone-50 py-24 md:py-32">
         <div className="max-w-4xl mx-auto px-6 md:px-10">
           <Reveal>
-            <h2 className="font-['Cinzel'] font-bold text-stone-900 leading-tight mb-8"
-              style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
+            <SplitText
+              className="font-['Cinzel'] font-bold text-stone-900 leading-tight mb-10"
+              style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}
+            >
               What is Lalitha Sahasranamam?
-            </h2>
+            </SplitText>
           </Reveal>
           <div className="space-y-6 text-stone-600 text-base md:text-lg font-light leading-relaxed">
             <Reveal delay={0.1}>
@@ -67,10 +69,13 @@ export default function SahasranamamPage() {
       <section className="bg-stone-100 py-24 md:py-32">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <Reveal>
-            <h2 className="font-['Cinzel'] font-bold text-stone-900 mb-4" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
+            <SplitText
+              className="font-['Cinzel'] font-bold text-stone-900 mb-4"
+              style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}
+            >
               Benefits of Chanting
-            </h2>
-            <p className="text-stone-500 font-light mb-14 max-w-xl">
+            </SplitText>
+            <p className="text-stone-500 font-light mb-16 max-w-xl text-lg">
               Reciting or listening to the Lalitha Sahasranamam is considered a powerful spiritual practice.
             </p>
           </Reveal>
@@ -89,10 +94,11 @@ export default function SahasranamamPage() {
               { title: "Success & Prosperity", desc: "Brings abundance and good fortune" },
               { title: "Divine Grace", desc: "Opens the heart to unconditional love and divine guidance" },
             ].map((b, i) => (
-              <motion.div key={b.title} variants={staggerItem} className="bg-white rounded-xl p-6 border border-stone-200 h-full">
-                <div className="w-8 h-px bg-amber-600 mb-4" />
-                <h3 className="font-['Cinzel'] font-semibold text-stone-900 text-base mb-3">{b.title}</h3>
-                <p className="text-stone-500 text-sm leading-relaxed">{b.desc}</p>
+              <motion.div key={b.title} variants={staggerItem} className="group relative bg-white/70 backdrop-blur-md rounded-2xl p-8 border border-stone-200/60 hover:border-amber-300 h-full hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+                <div className="absolute -right-10 -top-10 w-32 h-32 bg-amber-50 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                <div className="w-10 h-1 bg-amber-500 mb-6 rounded-full origin-left group-hover:scale-x-150 transition-transform duration-500" />
+                <h3 className="relative z-10 font-['Cinzel'] font-bold text-stone-900 text-lg mb-3">{b.title}</h3>
+                <p className="relative z-10 text-stone-600 text-sm md:text-base leading-relaxed">{b.desc}</p>
               </motion.div>
             ))}
           </motion.div>
