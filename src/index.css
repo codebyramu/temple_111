@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap');
+@import "tailwindcss";
+
+/* ── Global resets ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Montserrat', system-ui, sans-serif;
+  background: #f7f5f2;
+  color: #1c1917;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* ── Hide default cursor everywhere so our magnetic one shows ── */
+* { cursor: none !important; }
+
+/* ── Smooth font rendering for Cinzel on all elements ── */
+h1, h2, h3, h4, h5, h6 {
+  font-kerning: normal;
+  text-rendering: optimizeLegibility;
+}
+
+/* ── Prevent any text from breaking mid-word unless truly necessary ── */
+h1, h2, h3 {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  hyphens: none;
+}
+
+/* ── Selection color ── */
+::selection {
+  background: #b45309;
+  color: #fff;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #f7f5f2; }
+::-webkit-scrollbar-thumb { background: #b45309; border-radius: 4px; }
