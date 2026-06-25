@@ -19,26 +19,45 @@ import { TEMPLES, RIVERS } from "../data/content";
    HOVER ROW (Full Width Trigger)
 ─────────────────────────────────────── */
 function HoverRow({ word, i }) {
-  const [hovered, setHovered] = useState(false);
+  const [filled, setFilled] = useState(false);
+  const rowRef = useRef(null);
+  const isTouch = typeof window !== "undefined"
+    ? window.matchMedia("(hover: none) and (pointer: coarse)").matches
+    : false;
+
+  // Mobile: fill triggers as the row scrolls into view
+  useEffect(() => {
+    if (!isTouch || !rowRef.current) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setFilled(true); },
+      { threshold: 0.6 }
+    );
+    observer.observe(rowRef.current);
+    return () => observer.disconnect();
+  }, [isTouch]);
+
   return (
-    <motion.div
-      className="border-b border-stone-200 last:border-0 px-5 md:px-10 py-5 md:py-7 flex items-center cursor-pointer relative overflow-hidden"
-      initial={{ x: i % 2 === 0 ? -60 : 60, opacity: 0 }}
-      whileInView={{ x: 0, opacity: 1 }}
-      viewport={{ once: true, amount: 0.5 }}
-      transition={{ duration: 1, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      onTouchStart={() => setHovered(true)}
-      onTouchEnd={() => setTimeout(() => setHovered(false), 600)}
+    <div
+      ref={rowRef}
+      className="border-b border-stone-200 last:border-0 px-5 md:px-10 py-5 md:py-7 flex items-center relative overflow-hidden"
+      onMouseEnter={() => { if (!isTouch) setFilled(true); }}
+      onMouseLeave={() => { if (!isTouch) setFilled(false); }}
       data-cursor-grow
     >
-      {/* Background Fill with Wavy Paint Drop Edge */}
+      {/* Slide-in entry animation wrapper */}
+      <motion.div
+        className="absolute inset-0 pointer-events-none"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, amount: 0.4 }}
+        transition={{ duration: 0.01 }}
+      />
+      {/* Yellow fill with wavy paint-drop edge */}
       <motion.div
         className="absolute top-0 bottom-0 left-0 bg-[#dca817]"
         initial={{ width: "0%" }}
-        animate={{ width: hovered ? "100%" : "0%" }}
-        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        animate={{ width: filled ? "100%" : "0%" }}
+        transition={{ duration: isTouch ? 1.1 : 0.65, ease: [0.16, 1, 0.3, 1] }}
       >
         <svg
           className="absolute right-[-39px] top-0 h-full w-[40px] text-[#dca817]"
@@ -50,13 +69,18 @@ function HoverRow({ word, i }) {
           <path d="M0,0 C30,10 40,30 15,50 C-10,70 20,90 0,100 Z" />
         </svg>
       </motion.div>
-      <span
-        className="relative z-10 mix-blend-multiply font-['Philosopher'] font-bold text-stone-900 pointer-events-none leading-none"
-        style={{ fontSize: "clamp(2.5rem, 8vw, 8rem)" }}
+      {/* Slide-in word */}
+      <motion.span
+        className="relative z-10 mix-blend-multiply font-['Philosopher'] font-bold text-stone-900 leading-none select-none"
+        style={{ fontSize: "clamp(2.4rem, 8vw, 8rem)" }}
+        initial={{ x: i % 2 === 0 ? -50 : 50, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        viewport={{ once: true, amount: 0.4 }}
+        transition={{ duration: 0.9, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
       >
         {word}
-      </span>
-    </motion.div>
+      </motion.span>
+    </div>
   );
 }
 
@@ -566,6 +590,67 @@ export default function Home() {
 
       {/* ── RIVERS PREVIEW ── */}
       <RiversPreview />
+
+      {/* ── FURTHER EXPLORATION ── */}
+      <section className="bg-stone-50 py-16 md:py-32">
+        <div className="max-w-7xl mx-auto px-5 md:px-10">
+          <Reveal>
+            <div className="mb-12 md:mb-16 text-center">
+              <h2 className="font-['Philosopher'] font-bold text-stone-900 leading-tight mb-4" style={{ fontSize: "clamp(1.8rem, 4.5vw, 3.75rem)" }}>
+                Discover More
+              </h2>
+              <div className="w-12 h-px bg-amber-600 mx-auto" />
+            </div>
+          </Reveal>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+            <Reveal delay={0.1}>
+              <Link to="/sahasranamam" className="block group">
+                <div className="bg-white p-8 rounded-2xl border border-stone-200 hover:border-amber-400 transition-colors shadow-sm hover:shadow-md h-full flex flex-col items-center text-center">
+                  <div className="w-12 h-12 rounded-full bg-stone-100 flex items-center justify-center mb-6 group-hover:bg-amber-100 transition-colors">
+                    <span className="text-xl">📜</span>
+                  </div>
+                  <h3 className="font-['Philosopher'] font-bold text-xl text-stone-900 mb-3">Lalita Sahasranamam</h3>
+                  <p className="text-stone-600 font-light text-sm leading-relaxed mb-6 flex-grow">
+                    Explore Bhaskararaya's masterpiece, a profound commentary on the thousand names of the Goddess.
+                  </p>
+                  <span className="text-[10px] uppercase tracking-widest text-amber-700 font-semibold group-hover:text-amber-600">Read More →</span>
+                </div>
+              </Link>
+            </Reveal>
+
+            <Reveal delay={0.2}>
+              <Link to="/divine-street" className="block group">
+                <div className="bg-white p-8 rounded-2xl border border-stone-200 hover:border-amber-400 transition-colors shadow-sm hover:shadow-md h-full flex flex-col items-center text-center">
+                  <div className="w-12 h-12 rounded-full bg-stone-100 flex items-center justify-center mb-6 group-hover:bg-amber-100 transition-colors">
+                    <span className="text-xl">🏘️</span>
+                  </div>
+                  <h3 className="font-['Philosopher'] font-bold text-xl text-stone-900 mb-3">Divine Street</h3>
+                  <p className="text-stone-600 font-light text-sm leading-relaxed mb-6 flex-grow">
+                    Walk through the Agraharam, a living settlement of Vedic scholars and ancient heritage homes.
+                  </p>
+                  <span className="text-[10px] uppercase tracking-widest text-amber-700 font-semibold group-hover:text-amber-600">Explore →</span>
+                </div>
+              </Link>
+            </Reveal>
+
+            <Reveal delay={0.3}>
+              <Link to="/trust" className="block group">
+                <div className="bg-white p-8 rounded-2xl border border-stone-200 hover:border-amber-400 transition-colors shadow-sm hover:shadow-md h-full flex flex-col items-center text-center">
+                  <div className="w-12 h-12 rounded-full bg-stone-100 flex items-center justify-center mb-6 group-hover:bg-amber-100 transition-colors">
+                    <span className="text-xl">🤝</span>
+                  </div>
+                  <h3 className="font-['Philosopher'] font-bold text-xl text-stone-900 mb-3">The Trust</h3>
+                  <p className="text-stone-600 font-light text-sm leading-relaxed mb-6 flex-grow">
+                    Learn about our efforts to preserve the temple, rituals, and the spiritual legacy of the village.
+                  </p>
+                  <span className="text-[10px] uppercase tracking-widest text-amber-700 font-semibold group-hover:text-amber-600">Learn More →</span>
+                </div>
+              </Link>
+            </Reveal>
+          </div>
+        </div>
+      </section>
 
       {/* ── CLOSING QUOTE ── */}
       <section className="bg-stone-900 py-20 md:py-44 px-5 md:px-10 overflow-hidden relative">

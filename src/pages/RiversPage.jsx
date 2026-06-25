@@ -12,7 +12,7 @@ export default function RiversPage() {
   return (
     <PageTransition>
       {/* HERO */}
-      <section ref={heroRef} className="relative min-h-[80dvh] flex items-end overflow-hidden">
+      <section ref={heroRef} className="relative min-h-[80dvh] flex items-center justify-center text-center overflow-hidden">
         <motion.img
           src="/images/rivers_panorama.jpg"
           alt="Sacred rivers"
@@ -20,8 +20,8 @@ export default function RiversPage() {
           style={{ height: "120%", y: imgY }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-stone-950/90 via-stone-950/40 to-transparent" />
-        <div className="relative z-10 max-w-7xl mx-auto w-full px-5 md:px-10 pb-10 md:pb-24">
-          <div className="flex items-center gap-2 text-[10px] uppercase tracking-widest text-stone-400 mb-6">
+        <div className="relative z-10 max-w-5xl mx-auto w-full px-5 md:px-10 flex flex-col items-center">
+          <div className="flex items-center justify-center gap-2 text-[10px] uppercase tracking-widest text-stone-400 mb-6">
             <Link to="/" className="hover:text-amber-400 transition-colors">Home</Link>
             <span>/</span>
             <span className="text-amber-400">Sacred Rivers</span>
@@ -30,7 +30,7 @@ export default function RiversPage() {
             style={{ fontSize: "clamp(2.5rem, 7vw, 6rem)" }}>
             Three Sacred Rivers.
           </h1>
-          <p className="font-['Cormorant_Garamond'] italic text-amber-300 text-xl md:text-2xl max-w-xl">
+          <p className="font-['Cormorant_Garamond'] italic text-amber-300 text-xl md:text-2xl max-w-xl mx-auto text-center">
             Where water becomes worship, and the land becomes divine.
           </p>
         </div>

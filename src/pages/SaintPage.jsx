@@ -14,11 +14,11 @@ export default function SaintPage() {
   return (
     <PageTransition>
       {/* HERO */}
-      <section className="relative min-h-[55dvh] md:min-h-[75dvh] flex items-end overflow-hidden">
+      <section className="relative min-h-[55dvh] md:min-h-[75dvh] flex items-center justify-center text-center overflow-hidden">
         <Image3D src="/images/saint_scholar.jpg" alt="Shri Bhaskararaya" className="absolute inset-0 w-full h-full" imgClassName="w-full h-full object-cover" style={{ width: "100%", height: "100%" }} hoverScale={1} />
         <div className="absolute inset-0 bg-gradient-to-t from-stone-950/95 via-stone-950/50 to-stone-950/10" />
-        <div className="relative z-10 max-w-7xl mx-auto w-full px-5 md:px-10 pb-10 md:pb-24">
-          <div className="flex items-center gap-2 text-[10px] uppercase tracking-widest text-stone-400 mb-6">
+        <div className="relative z-10 max-w-5xl mx-auto w-full px-5 md:px-10 flex flex-col items-center">
+          <div className="flex items-center justify-center gap-2 text-[10px] uppercase tracking-widest text-stone-400 mb-6">
             <Link to="/" className="hover:text-amber-400 transition-colors">Home</Link>
             <span>/</span>
             <span className="text-amber-400">The Saint</span>
@@ -27,7 +27,7 @@ export default function SaintPage() {
             style={{ fontSize: "clamp(2.5rem, 7vw, 6rem)" }}>
             Shri Bhaskararaya
           </h1>
-          <p className="font-['Cormorant_Garamond'] italic text-amber-300 text-xl md:text-2xl max-w-xl">
+          <p className="font-['Cormorant_Garamond'] italic text-amber-300 text-xl md:text-2xl max-w-xl mx-auto text-center">
             The greatest scholar-saint of the Srividya tradition.
           </p>
         </div>
@@ -99,7 +99,7 @@ export default function SaintPage() {
             <h2 className="font-['Philosopher'] font-bold text-stone-900 mb-4" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
               40+ Sanskrit Works
             </h2>
-            <p className="text-stone-500 font-light mb-14 max-w-xl">
+            <p className="text-stone-500 font-light mb-14 max-w-xl mx-auto text-center">
               Bhaskararaya's writings remain authoritative texts in the Srividya tradition to this day. Here are some of his most celebrated works.
             </p>
           </Reveal>

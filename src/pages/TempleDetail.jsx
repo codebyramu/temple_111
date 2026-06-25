@@ -12,7 +12,7 @@ export default function TempleDetail() {
   return (
     <PageTransition>
       {/* HERO */}
-      <section className="relative min-h-[100dvh] flex items-end overflow-hidden">
+      <section className="relative min-h-[100dvh] flex items-center justify-center text-center overflow-hidden">
         <motion.div
           className="absolute inset-0"
           initial={{ scale: 1.1 }}
@@ -30,8 +30,8 @@ export default function TempleDetail() {
         </motion.div>
         <div className="absolute inset-0 bg-gradient-to-t from-stone-950/95 via-stone-950/50 to-stone-950/15" />
 
-        <div className="relative z-10 max-w-7xl mx-auto w-full px-5 md:px-10 pb-10 md:pb-24">
-          <div className="flex items-center gap-2 mb-8 text-[10px] uppercase tracking-widest text-stone-400">
+        <div className="relative z-10 max-w-5xl mx-auto w-full px-5 md:px-10 flex flex-col items-center">
+          <div className="flex items-center justify-center gap-2 mb-8 text-[10px] uppercase tracking-widest text-stone-400">
             <Link to="/" className="hover:text-amber-400 transition-colors">Home</Link>
             <span>/</span>
             <Link to="/shrines" className="hover:text-amber-400 transition-colors">Shrines</Link>

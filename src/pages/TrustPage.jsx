@@ -6,7 +6,7 @@ export default function TrustPage() {
   return (
     <PageTransition>
       {/* HERO */}
-      <section className="relative min-h-[55dvh] md:min-h-[75dvh] flex items-end overflow-hidden">
+      <section className="relative min-h-[55dvh] md:min-h-[75dvh] flex items-center justify-center text-center overflow-hidden">
         <Image3D
           src="/images/village_aerial.jpg"
           alt="Srinivas Rama Trust"
@@ -16,8 +16,8 @@ export default function TrustPage() {
           hoverScale={1}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-stone-950/95 via-stone-950/60 to-stone-950/20" />
-        <div className="relative z-10 max-w-7xl mx-auto w-full px-5 md:px-10 pb-10 md:pb-24">
-          <div className="flex items-center gap-2 text-[10px] uppercase tracking-widest text-stone-400 mb-6">
+        <div className="relative z-10 max-w-5xl mx-auto w-full px-5 md:px-10 flex flex-col items-center">
+          <div className="flex items-center justify-center gap-2 text-[10px] uppercase tracking-widest text-stone-400 mb-6">
             <Link to="/" className="hover:text-amber-400 transition-colors">Home</Link>
             <span>/</span>
             <span className="text-amber-400">Srinivas Rama Trust</span>

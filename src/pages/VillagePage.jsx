@@ -14,7 +14,7 @@ export default function VillagePage() {
   return (
     <PageTransition>
       {/* HERO */}
-      <section className="relative min-h-[60dvh] md:min-h-[75dvh] flex items-end overflow-hidden">
+      <section className="relative min-h-[60dvh] md:min-h-[75dvh] flex items-center justify-center text-center overflow-hidden">
         <Image3D
           src="/images/village_aerial.jpg"
           alt="Bhaskararajapuram village"
@@ -24,8 +24,8 @@ export default function VillagePage() {
           hoverScale={1}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-stone-950/90 via-stone-950/40 to-transparent" />
-        <div className="relative z-10 max-w-7xl mx-auto w-full px-5 md:px-10 pb-10 md:pb-24">
-          <div className="flex items-center gap-2 text-[10px] uppercase tracking-widest text-stone-400 mb-4 md:mb-6">
+        <div className="relative z-10 max-w-5xl mx-auto w-full px-5 md:px-10 flex flex-col items-center">
+          <div className="flex items-center justify-center gap-2 text-[10px] uppercase tracking-widest text-stone-400 mb-4 md:mb-6">
             <Link to="/" className="hover:text-amber-400 transition-colors">Home</Link>
             <span>/</span>
             <span className="text-amber-400">The Village</span>
@@ -34,7 +34,7 @@ export default function VillagePage() {
             style={{ fontSize: "clamp(2rem, 7vw, 6rem)" }}>
             Bhaskararajapuram
           </h1>
-          <p className="font-['Cormorant_Garamond'] italic text-amber-300 text-lg md:text-2xl max-w-xl">
+          <p className="font-['Cormorant_Garamond'] italic text-amber-300 text-lg md:text-2xl max-w-xl mx-auto text-center">
             A peaceful spiritual village where time moves to the rhythm of temple bells.
           </p>
         </div>
