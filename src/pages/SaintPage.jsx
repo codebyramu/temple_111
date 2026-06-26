@@ -106,7 +106,7 @@ export default function SaintPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {WORKS.map((w, i) => (
               <Reveal key={w.title} delay={i * 0.07}>
-                <div className="relative bg-stone-900/60 backdrop-blur-xl rounded-2xl p-6 border border-white/5 hover:border-amber-500/30 hover:bg-stone-900/80 shadow-2xl overflow-hidden group transition-all duration-500 h-full">
+                <div className="relative bg-stone-900/95 md:bg-stone-900/60 md:backdrop-blur-xl rounded-2xl p-6 border border-white/5 hover:border-amber-500/30 hover:bg-stone-900/80 shadow-2xl overflow-hidden group transition-all duration-500 h-full">
                   <div className="w-8 h-px bg-amber-600 mb-4" />
                   <h3 className="font-['Philosopher'] font-semibold text-stone-100 text-base mb-3">{w.title}</h3>
                   <p className="text-stone-500 text-sm leading-relaxed">{w.desc}</p>

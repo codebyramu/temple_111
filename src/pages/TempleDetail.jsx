@@ -97,7 +97,7 @@ export default function TempleDetail() {
           >
             {temple.facts.map((f) => (
               <motion.div key={f.label} variants={staggerItem}
-                className="relative bg-stone-900/60 backdrop-blur-xl rounded-2xl p-6 border border-white/5 hover:border-amber-500/30 hover:bg-stone-900/80 shadow-2xl overflow-hidden group transition-all duration-500 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+                className="relative bg-stone-900/95 md:bg-stone-900/60 md:backdrop-blur-xl rounded-2xl p-6 border border-white/5 hover:border-amber-500/30 hover:bg-stone-900/80 shadow-2xl overflow-hidden group transition-all duration-500 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
                 <p className="text-[10px] uppercase tracking-widest text-amber-500 mb-2">{f.label}</p>
                 <p className="font-['Philosopher'] font-semibold text-stone-100 text-lg">{f.value}</p>
               </motion.div>

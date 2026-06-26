@@ -389,16 +389,15 @@ export function HoverRow({ word, i }) {
     ? window.matchMedia("(hover: none) and (pointer: coarse)").matches
     : false;
 
-  // Mobile: fill triggers as the row scrolls into view
-  useEffect(() => {
-    if (!isTouch || !rowRef.current) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setFilled(true); },
-      { threshold: 0.6 }
-    );
-    observer.observe(rowRef.current);
-    return () => observer.disconnect();
-  }, [isTouch]);
+  const { scrollYProgress } = useScroll({
+    target: rowRef,
+    offset: ["start bottom", "center center"]
+  });
+  
+  const mobileWidth = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+
+  // Desktop: fill triggers on hover (state)
+  // Mobile: fill uses scrollYProgress (motion value)
 
   return (
     <div
@@ -419,9 +418,10 @@ export function HoverRow({ word, i }) {
       {/* Yellow fill with wavy paint-drop edge */}
       <motion.div
         className="absolute top-0 bottom-0 left-0 bg-[#dca817]"
-        initial={{ width: "0%" }}
-        animate={{ width: filled ? "100%" : "0%" }}
-        transition={{ duration: isTouch ? 1.1 : 0.65, ease: [0.16, 1, 0.3, 1] }}
+        style={isTouch ? { width: mobileWidth } : undefined}
+        initial={!isTouch ? { width: "0%" } : undefined}
+        animate={!isTouch ? { width: filled ? "100%" : "0%" } : undefined}
+        transition={!isTouch ? { duration: 0.65, ease: [0.16, 1, 0.3, 1] } : undefined}
       >
         <svg
           className="absolute right-[-39px] top-0 h-full w-[40px] text-[#dca817]"

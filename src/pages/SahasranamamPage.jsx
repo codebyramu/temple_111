@@ -95,7 +95,7 @@ export default function SahasranamamPage() {
               { title: "Divine Grace", desc: "Opens the heart to unconditional love and divine guidance" },
             ].map((b, i) => (
               <motion.div key={b.title} variants={staggerItem} className="group relative bg-[#292524]/70 backdrop-blur-md rounded-2xl p-8 border border-stone-700/50/60 hover:border-amber-300 h-full hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:-translate-y-1 transition-all duration-300 overflow-hidden">
-                <div className="absolute -right-10 -top-10 w-32 h-32 bg-amber-50 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                <div className="absolute -right-10 -top-10 hidden md:block absolute -right-10 -top-10 w-32 h-32 bg-amber-50 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                 <div className="w-10 h-1 bg-amber-500 mb-6 rounded-full origin-left group-hover:scale-x-150 transition-transform duration-500" />
                 <h3 className="relative z-10 font-['Philosopher'] font-bold text-stone-100 text-lg mb-3">{b.title}</h3>
                 <p className="relative z-10 text-stone-400 text-sm md:text-base leading-relaxed">{b.desc}</p>

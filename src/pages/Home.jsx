@@ -348,6 +348,17 @@ export default function Home() {
                 Explore Temples
               </Link>
             </MagneticButton>
+
+            <MagneticButton>
+              <a
+                href="https://maps.app.goo.gl/3A3qN6uR9FwQ4P7o6" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-transparent text-white border border-stone-400 hover:border-amber-400 text-[11px] uppercase tracking-widest px-7 py-3.5 rounded-full transition-colors font-semibold shadow-lg"
+              >
+                📍 Location
+              </a>
+            </MagneticButton>
             <Link
               to="/village"
               className="text-[11px] uppercase tracking-widest text-stone-200 hover:text-amber-400 transition-colors font-semibold flex items-center gap-2 drop-shadow-sm"
