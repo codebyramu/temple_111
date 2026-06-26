@@ -2,7 +2,7 @@ import { AnimatePresence } from "framer-motion";
 import { Routes, Route, useLocation } from "react-router-dom";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
-import { MagneticCursor, ScrollToTop, ScrollProgressBar } from "./components/shared";
+import { ScrollToTop, ScrollProgressBar } from "./components/shared";
 import Home from "./pages/Home";
 import VillagePage from "./pages/VillagePage";
 import SaintPage from "./pages/SaintPage";
@@ -18,7 +18,6 @@ export default function App() {
 
   return (
     <>
-      <MagneticCursor />
       <ScrollProgressBar />
       <ScrollToTop />
       <Nav />

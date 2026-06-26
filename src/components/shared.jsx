@@ -257,8 +257,9 @@ export function Image3D({ src, alt, className = "", imgClassName = "", style = {
 
   // Mobile: plain img, no 3D overhead
   if (isTouch) {
+    const isAbsolute = className.includes('absolute');
     return (
-      <div className={`relative ${className}`} style={style}>
+      <div className={`${isAbsolute ? '' : 'relative'} ${className}`} style={style}>
         <img src={src} alt={alt} className={`w-full h-full object-cover ${imgClassName}`} />
         {children}
       </div>
@@ -271,7 +272,7 @@ export function Image3D({ src, alt, className = "", imgClassName = "", style = {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{ rotateX, rotateY, transformPerspective: 900, ...style }}
-      className={`relative ${className}`}
+      className={`${className.includes('absolute') ? '' : 'relative'} ${className}`}
       whileHover={{ scale: hoverScale }}
       transition={{ scale: { duration: 0.3 } }}
     >

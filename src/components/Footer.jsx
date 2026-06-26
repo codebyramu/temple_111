@@ -27,10 +27,10 @@ export default function Footer() {
       />
 
       <div className="relative max-w-7xl mx-auto px-5 md:px-10 pt-16 pb-10">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-8 mb-14">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 sm:gap-10 md:gap-8 mb-14">
 
           {/* Brand */}
-          <div className="col-span-2 md:col-span-1">
+          <div className="col-span-1 sm:col-span-2 md:col-span-1">
             <motion.div
               whileHover={{ scale: 1.02 }}
               className="inline-block mb-4"
