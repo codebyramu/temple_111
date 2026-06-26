@@ -7,7 +7,7 @@ export default function ShrinesPage() {
   return (
     <PageTransition>
       {/* HERO */}
-      <section className="relative pt-32 pb-20 md:pt-44 md:pb-28 bg-stone-100 overflow-hidden">
+      <section className="relative pt-32 pb-20 md:pt-44 md:pb-28 bg-[#181512] overflow-hidden">
         <motion.div
           className="absolute inset-0 opacity-[0.06] pointer-events-none"
           animate={{ scale: [1, 1.05, 1] }}
@@ -22,7 +22,7 @@ export default function ShrinesPage() {
           </div>
           <Reveal>
             <WipeReveal>
-              <h1 className="font-['Philosopher'] font-black text-stone-900 leading-tight"
+              <h1 className="font-['Philosopher'] font-black text-stone-100 leading-tight"
                 style={{ fontSize: "clamp(2.8rem, 7vw, 6rem)" }}>
                 Four Sacred Shrines.
               </h1>
@@ -33,7 +33,7 @@ export default function ShrinesPage() {
             </p>
           </Reveal>
           <Reveal delay={0.15}>
-            <p className="text-stone-600 text-lg font-light leading-relaxed max-w-2xl mt-6">
+            <p className="text-stone-400 text-lg font-light leading-relaxed max-w-2xl mt-6">
               Each temple in Bhaskararajapuram carries a unique aspect of the divine. Together, they form a sacred constellation anchoring the spiritual life of this village for centuries.
             </p>
           </Reveal>
@@ -41,7 +41,7 @@ export default function ShrinesPage() {
       </section>
 
       {/* TEMPLES — alternating layout */}
-      <section className="bg-stone-50 py-20">
+      <section className="bg-[#1c1917] py-20">
         <div className="max-w-7xl mx-auto px-5 md:px-10 space-y-10">
           {TEMPLES.map((t, i) => (
             <Reveal key={t.id} delay={i * 0.07}>
@@ -62,13 +62,13 @@ export default function ShrinesPage() {
                     </div>
                   </div>
                   {/* Content */}
-                  <div className="bg-white p-8 md:p-12 flex flex-col justify-center">
+                  <div className="bg-[#292524] p-8 md:p-12 flex flex-col justify-center">
                     <p className="text-[10px] uppercase tracking-widest text-amber-700 mb-3">{t.deity}</p>
-                    <h2 className="font-['Philosopher'] font-bold text-stone-900 leading-tight mb-4"
+                    <h2 className="font-['Philosopher'] font-bold text-stone-100 leading-tight mb-4"
                       style={{ fontSize: "clamp(1.5rem, 3vw, 2.4rem)" }}>
                       {t.name}
                     </h2>
-                    <p className="font-['Cormorant_Garamond'] italic text-stone-600 text-lg mb-4 leading-snug">{t.tagline}</p>
+                    <p className="font-['Cormorant_Garamond'] italic text-stone-400 text-lg mb-4 leading-snug">{t.tagline}</p>
                     <p className="text-stone-500 text-sm leading-relaxed mb-8">{t.desc}</p>
                     <div className="flex items-center gap-2 text-[11px] uppercase tracking-widest text-amber-700 group-hover:gap-5 transition-all duration-300 font-semibold">
                       Enter this Shrine
@@ -98,6 +98,8 @@ export default function ShrinesPage() {
           </Link>
         </Reveal>
       </section>
+      {/* Massive Spacing */}
+      <div className="h-32 md:h-56 bg-[#181512]" />
     </PageTransition>
   );
 }

@@ -35,17 +35,17 @@ export default function SahasranamamPage() {
       </section>
 
       {/* INTRO */}
-      <section className="bg-stone-50 py-12 md:py-32">
+      <section className="bg-[#1c1917] py-12 md:py-32">
         <div className="max-w-4xl mx-auto px-5 md:px-10">
           <Reveal>
             <SplitText
-              className="font-['Philosopher'] font-bold text-stone-900 leading-tight mb-10"
+              className="font-['Philosopher'] font-bold text-stone-100 leading-tight mb-10"
               style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}
             >
               What is Lalitha Sahasranamam?
             </SplitText>
           </Reveal>
-          <div className="space-y-6 text-stone-600 text-base md:text-lg font-light leading-relaxed">
+          <div className="space-y-6 text-stone-400 text-base md:text-lg font-light leading-relaxed">
             <Reveal delay={0.1}>
               <p>
                 <strong>Sri Lalitha Sahasranamam</strong> is one of the most revered texts in Sanatana Dharma. It comprises 1,000 sacred names of Goddess Lalita Tripura Sundari, the supreme embodiment of the Divine Feminine energy (Shakti).
@@ -66,11 +66,11 @@ export default function SahasranamamPage() {
       </section>
 
       {/* BENEFITS */}
-      <section className="bg-stone-100 py-12 md:py-32">
+      <section className="bg-[#181512] py-12 md:py-32">
         <div className="max-w-7xl mx-auto px-5 md:px-10">
           <Reveal>
             <SplitText
-              className="font-['Philosopher'] font-bold text-stone-900 mb-4"
+              className="font-['Philosopher'] font-bold text-stone-100 mb-4"
               style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}
             >
               Benefits of Chanting
@@ -94,11 +94,11 @@ export default function SahasranamamPage() {
               { title: "Success & Prosperity", desc: "Brings abundance and good fortune" },
               { title: "Divine Grace", desc: "Opens the heart to unconditional love and divine guidance" },
             ].map((b, i) => (
-              <motion.div key={b.title} variants={staggerItem} className="group relative bg-white/70 backdrop-blur-md rounded-2xl p-8 border border-stone-200/60 hover:border-amber-300 h-full hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+              <motion.div key={b.title} variants={staggerItem} className="group relative bg-[#292524]/70 backdrop-blur-md rounded-2xl p-8 border border-stone-700/50/60 hover:border-amber-300 h-full hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:-translate-y-1 transition-all duration-300 overflow-hidden">
                 <div className="absolute -right-10 -top-10 w-32 h-32 bg-amber-50 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                 <div className="w-10 h-1 bg-amber-500 mb-6 rounded-full origin-left group-hover:scale-x-150 transition-transform duration-500" />
-                <h3 className="relative z-10 font-['Philosopher'] font-bold text-stone-900 text-lg mb-3">{b.title}</h3>
-                <p className="relative z-10 text-stone-600 text-sm md:text-base leading-relaxed">{b.desc}</p>
+                <h3 className="relative z-10 font-['Philosopher'] font-bold text-stone-100 text-lg mb-3">{b.title}</h3>
+                <p className="relative z-10 text-stone-400 text-sm md:text-base leading-relaxed">{b.desc}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -106,15 +106,15 @@ export default function SahasranamamPage() {
       </section>
 
       {/* THE VILLAGE CONNECTION */}
-      <section className="bg-stone-50 py-12 md:py-32">
+      <section className="bg-[#1c1917] py-12 md:py-32">
         <div className="max-w-4xl mx-auto px-5 md:px-10">
           <Reveal>
-            <h2 className="font-['Philosopher'] font-bold text-stone-900 leading-tight mb-8"
+            <h2 className="font-['Philosopher'] font-bold text-stone-100 leading-tight mb-8"
               style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
               Central to Bhaskararajapuram
             </h2>
           </Reveal>
-          <div className="space-y-6 text-stone-600 text-base md:text-lg font-light leading-relaxed">
+          <div className="space-y-6 text-stone-400 text-base md:text-lg font-light leading-relaxed">
             <Reveal delay={0.1}>
               <p>
                 Bhaskararajapuram is closely associated with Shri Bhaskararaya, the master interpreter of Lalitha Sahasranamam. His commentary, <em>Lalita Sahasranama Bhashya</em>, is considered the authoritative explanation, where each name is unpacked with grammar, philosophical meaning, and cross-references to Upanishads and Tantras.
@@ -141,6 +141,8 @@ export default function SahasranamamPage() {
           </Link>
         </Reveal>
       </section>
+      {/* Massive Spacing */}
+      <div className="h-32 md:h-56 bg-[#181512]" />
     </PageTransition>
   );
 }

@@ -35,17 +35,17 @@ export default function TrustPage() {
       </section>
 
       {/* OVERVIEW */}
-      <section className="bg-stone-50 py-12 md:py-32">
+      <section className="bg-[#1c1917] py-12 md:py-32">
         <div className="max-w-4xl mx-auto px-5 md:px-10">
           <Reveal>
             <SplitText
-              className="font-['Philosopher'] font-bold text-stone-900 leading-tight mb-10"
+              className="font-['Philosopher'] font-bold text-stone-100 leading-tight mb-10"
               style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}
             >
               About the Trust
             </SplitText>
           </Reveal>
-          <div className="space-y-6 text-stone-600 text-base md:text-lg font-light leading-relaxed">
+          <div className="space-y-6 text-stone-400 text-base md:text-lg font-light leading-relaxed">
             <Reveal delay={0.1}>
               <p>
                 The <strong>Srinivas Rama Trust</strong> is a corpus put together by the residents and well-wishers of Bhaskararajapuram to carry out the maintenance, preservation, and due celebrations of the village's sacred landmarks throughout the year.
@@ -61,11 +61,11 @@ export default function TrustPage() {
       </section>
 
       {/* OPPORTUNITIES */}
-      <section className="bg-stone-100 py-12 md:py-32">
+      <section className="bg-[#181512] py-12 md:py-32">
         <div className="max-w-7xl mx-auto px-5 md:px-10">
           <Reveal>
             <SplitText
-              className="font-['Philosopher'] font-bold text-stone-900 mb-12 text-center"
+              className="font-['Philosopher'] font-bold text-stone-100 mb-12 text-center"
               style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}
             >
               Opportunities to Serve
@@ -86,10 +86,10 @@ export default function TrustPage() {
               { title: "Pilgrimage Assistance", desc: "Volunteer as guides or support staff for pilgrims visiting the temple complex and memorials." },
               { title: "Environmental Initiatives", desc: "Join efforts for cleaning temple surroundings, planting sacred trees, and promoting eco-friendly practices." },
             ].map((o, i) => (
-              <motion.div key={o.title} variants={staggerItem} className="group relative bg-white/60 backdrop-blur-md rounded-2xl p-8 border border-stone-200/50 hover:bg-white hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:-translate-y-1 transition-all duration-300">
+              <motion.div key={o.title} variants={staggerItem} className="group relative bg-[#292524]/60 backdrop-blur-md rounded-2xl p-8 border border-stone-700/50/50 hover:bg-[#292524] hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:-translate-y-1 transition-all duration-300">
                 <div className="w-10 h-1 bg-amber-500 mb-6 rounded-full origin-left group-hover:scale-x-150 transition-transform duration-500" />
-                <h3 className="font-['Philosopher'] font-bold text-stone-900 text-lg mb-3">{o.title}</h3>
-                <p className="text-stone-600 text-sm leading-relaxed">{o.desc}</p>
+                <h3 className="font-['Philosopher'] font-bold text-stone-100 text-lg mb-3">{o.title}</h3>
+                <p className="text-stone-400 text-sm leading-relaxed">{o.desc}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -97,21 +97,21 @@ export default function TrustPage() {
       </section>
 
       {/* GET IN TOUCH */}
-      <section className="bg-stone-50 py-12 md:py-32">
+      <section className="bg-[#1c1917] py-12 md:py-32">
         <div className="max-w-4xl mx-auto px-5 md:px-10 text-center">
           <Reveal>
-            <h2 className="font-['Philosopher'] font-bold text-stone-900 leading-tight mb-8"
+            <h2 className="font-['Philosopher'] font-bold text-stone-100 leading-tight mb-8"
               style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
               Contact & Donations
             </h2>
-            <p className="text-stone-600 text-base md:text-lg font-light leading-relaxed mb-8">
+            <p className="text-stone-400 text-base md:text-lg font-light leading-relaxed mb-8">
               Donations can be made for temple upkeep, festival sponsorship, educational scholarships, and medical aid. For more details on volunteering or making a contribution, please get in touch with the Trust office.
             </p>
-            <div className="inline-flex flex-col items-center gap-4 bg-white p-8 rounded-2xl border border-stone-200 shadow-sm">
-              <p className="font-['Philosopher'] font-bold text-stone-900 text-xl">Srinivas Rama Trust</p>
+            <div className="inline-flex flex-col items-center gap-4 bg-[#292524] p-8 rounded-2xl border border-stone-700/50 shadow-sm">
+              <p className="font-['Philosopher'] font-bold text-stone-100 text-xl">Srinivas Rama Trust</p>
               <p className="text-stone-500 text-sm uppercase tracking-widest">Bhaskararajapuram, Tamil Nadu</p>
               <div className="w-16 h-px bg-stone-300 my-2" />
-              <p className="text-stone-600 text-sm">To volunteer or donate, please email us or visit the temple office.</p>
+              <p className="text-stone-400 text-sm">To volunteer or donate, please email us or visit the temple office.</p>
               <a href="mailto:contact@bhaskararajapuram.com" className="mt-4 bg-amber-700 text-white text-[11px] uppercase tracking-widest px-8 py-3 rounded-full hover:bg-amber-600 transition-colors font-semibold">
                 Email the Trust
               </a>
@@ -119,6 +119,8 @@ export default function TrustPage() {
           </Reveal>
         </div>
       </section>
+      {/* Massive Spacing */}
+      <div className="h-32 md:h-56 bg-[#181512]" />
     </PageTransition>
   );
 }

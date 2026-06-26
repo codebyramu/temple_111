@@ -36,17 +36,17 @@ export default function DivineStreetPage() {
       </section>
 
       {/* INTRO */}
-      <section className="bg-stone-50 py-12 md:py-32">
+      <section className="bg-[#1c1917] py-12 md:py-32">
         <div className="max-w-4xl mx-auto px-5 md:px-10">
           <Reveal>
             <SplitText
-              className="font-['Philosopher'] font-bold text-stone-900 leading-tight mb-10"
+              className="font-['Philosopher'] font-bold text-stone-100 leading-tight mb-10"
               style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}
             >
               What is the Divine Street?
             </SplitText>
           </Reveal>
-          <div className="space-y-6 text-stone-600 text-base md:text-lg font-light leading-relaxed">
+          <div className="space-y-6 text-stone-400 text-base md:text-lg font-light leading-relaxed">
             <Reveal delay={0.1}>
               <p>
                 "Divine Street" refers to a spiritual corridor or pilgrimage pathway in and around Bhaskararajapuram, encompassing a series of temples, shrines, heritage spots, and sacred sites closely connected with Shri Bhaskararaya's life, the Srividya tradition, Devi and Shiva worship, and a living culture of devotion.
@@ -62,11 +62,11 @@ export default function DivineStreetPage() {
       </section>
 
       {/* LANDMARKS */}
-      <section className="bg-stone-100 py-12 md:py-32">
+      <section className="bg-[#181512] py-12 md:py-32">
         <div className="max-w-7xl mx-auto px-5 md:px-10">
           <Reveal>
             <SplitText
-              className="font-['Philosopher'] font-bold text-stone-900 mb-12"
+              className="font-['Philosopher'] font-bold text-stone-100 mb-12"
               style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}
             >
               Sacred Landmarks
@@ -75,12 +75,12 @@ export default function DivineStreetPage() {
           <div className="space-y-6">
             {TEMPLES.map((temple, i) => (
               <Reveal key={temple.id} delay={i * 0.1}>
-                <div className="group relative bg-white rounded-2xl p-8 border border-stone-100 hover:border-amber-200 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-400 overflow-hidden">
+                <div className="group relative bg-[#292524] rounded-2xl p-8 border border-stone-800 hover:border-amber-200 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-400 overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-r from-amber-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                   <div className="relative z-10">
-                    <h3 className="font-['Philosopher'] font-bold text-stone-900 text-xl md:text-2xl mb-2 group-hover:text-amber-700 transition-colors">{temple.name}</h3>
+                    <h3 className="font-['Philosopher'] font-bold text-stone-100 text-xl md:text-2xl mb-2 group-hover:text-amber-700 transition-colors">{temple.name}</h3>
                     <p className="text-[10px] uppercase tracking-widest text-amber-600 mb-4">{temple.deity}</p>
-                    <p className="text-stone-600 text-sm md:text-base leading-relaxed max-w-3xl">{temple.desc}</p>
+                    <p className="text-stone-400 text-sm md:text-base leading-relaxed max-w-3xl">{temple.desc}</p>
                   </div>
                   <Link to={`/temple/${temple.id}`} className="relative z-10 shrink-0 text-[11px] uppercase tracking-widest font-bold text-amber-700 bg-amber-50 hover:bg-amber-100 px-6 py-3 rounded-full transition-colors flex items-center gap-2 group-hover:pr-4">
                     Explore
@@ -94,11 +94,11 @@ export default function DivineStreetPage() {
       </section>
 
       {/* PILGRIMAGE PATH */}
-      <section className="bg-stone-50 py-12 md:py-32">
+      <section className="bg-[#1c1917] py-12 md:py-32">
         <div className="max-w-7xl mx-auto px-5 md:px-10 grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-center">
           <div>
             <Reveal>
-              <h2 className="font-['Philosopher'] font-bold text-stone-900 mb-8" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
+              <h2 className="font-['Philosopher'] font-bold text-stone-100 mb-8" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
                 Suggested Spiritual Route
               </h2>
             </Reveal>
@@ -120,8 +120,8 @@ export default function DivineStreetPage() {
                 <motion.div key={r.step} variants={staggerItem} className="flex gap-4 p-4 bg-amber-50 rounded-lg border border-amber-100">
                   <div className="shrink-0 font-['Philosopher'] text-amber-700 font-bold">{i + 1}</div>
                   <div>
-                    <h4 className="font-['Philosopher'] font-semibold text-stone-900 mb-1">{r.step.split('. ')[1]}</h4>
-                    <p className="text-stone-600 text-sm">{r.desc}</p>
+                    <h4 className="font-['Philosopher'] font-semibold text-stone-100 mb-1">{r.step.split('. ')[1]}</h4>
+                    <p className="text-stone-400 text-sm">{r.desc}</p>
                   </div>
                 </motion.div>
               ))}
@@ -152,6 +152,8 @@ export default function DivineStreetPage() {
           </Link>
         </Reveal>
       </section>
+      {/* Massive Spacing */}
+      <div className="h-32 md:h-56 bg-[#181512]" />
     </PageTransition>
   );
 }

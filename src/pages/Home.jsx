@@ -652,6 +652,9 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Massive 5-line empty spacing requested by user */}
+      <div className="h-32 md:h-56 bg-stone-50" />
+
       {/* ── CLOSING QUOTE ── */}
       <section className="bg-stone-900 py-20 md:py-44 px-5 md:px-10 overflow-hidden relative">
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
