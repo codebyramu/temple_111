@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Reveal, WipeReveal, Image3D, PageTransition, staggerContainer, staggerItem } from "../components/shared";
+import { Reveal, WipeReveal, HoverRow, Image3D, PageTransition, staggerContainer, staggerItem } from "../components/shared";
 import { TEMPLES } from "../data/content";
 
 export default function ShrinesPage() {
   return (
     <PageTransition>
       {/* HERO */}
-      <section className="relative pt-32 pb-20 md:pt-44 md:pb-28 bg-[#181512] overflow-hidden">
+      <section className="relative pt-32 pb-20 md:pt-44 md:pb-28 bg-[#12100e] overflow-hidden">
         <motion.div
           className="absolute inset-0 opacity-[0.06] pointer-events-none"
           animate={{ scale: [1, 1.05, 1] }}
@@ -16,9 +16,9 @@ export default function ShrinesPage() {
         />
         <div className="max-w-7xl mx-auto px-5 md:px-10">
           <div className="flex items-center gap-2 text-[10px] uppercase tracking-widest text-stone-400 mb-8">
-            <Link to="/" className="hover:text-amber-700 transition-colors">Home</Link>
+            <Link to="/" className="hover:text-amber-500 transition-colors">Home</Link>
             <span>/</span>
-            <span className="text-amber-700">Shrines</span>
+            <span className="text-amber-500">Shrines</span>
           </div>
           <Reveal>
             <WipeReveal>
@@ -27,7 +27,7 @@ export default function ShrinesPage() {
                 Four Sacred Shrines.
               </h1>
             </WipeReveal>
-            <p className="font-['Cormorant_Garamond'] italic text-amber-700 mt-3"
+            <p className="font-['Cormorant_Garamond'] italic text-amber-500 mt-3"
               style={{ fontSize: "clamp(1.4rem, 3vw, 2rem)" }}>
               Pillars of the village's spiritual life.
             </p>
@@ -41,7 +41,7 @@ export default function ShrinesPage() {
       </section>
 
       {/* TEMPLES — alternating layout */}
-      <section className="bg-[#1c1917] py-20">
+      <section className="bg-gradient-to-b from-[#1c1917] to-[#161412] py-20">
         <div className="max-w-7xl mx-auto px-5 md:px-10 space-y-10">
           {TEMPLES.map((t, i) => (
             <Reveal key={t.id} delay={i * 0.07}>
@@ -63,14 +63,14 @@ export default function ShrinesPage() {
                   </div>
                   {/* Content */}
                   <div className="bg-[#292524] p-8 md:p-12 flex flex-col justify-center">
-                    <p className="text-[10px] uppercase tracking-widest text-amber-700 mb-3">{t.deity}</p>
-                    <h2 className="font-['Philosopher'] font-bold text-stone-100 leading-tight mb-4"
+                    <p className="text-[10px] uppercase tracking-widest text-amber-500 mb-3">{t.deity}</p>
+                    <SplitText className="font-['Philosopher'] font-bold text-stone-100 leading-tight mb-4"
                       style={{ fontSize: "clamp(1.5rem, 3vw, 2.4rem)" }}>
                       {t.name}
-                    </h2>
+                    </SplitText>
                     <p className="font-['Cormorant_Garamond'] italic text-stone-400 text-lg mb-4 leading-snug">{t.tagline}</p>
                     <p className="text-stone-500 text-sm leading-relaxed mb-8">{t.desc}</p>
-                    <div className="flex items-center gap-2 text-[11px] uppercase tracking-widest text-amber-700 group-hover:gap-5 transition-all duration-300 font-semibold">
+                    <div className="flex items-center gap-2 text-[11px] uppercase tracking-widest text-amber-500 group-hover:gap-5 transition-all duration-300 font-semibold">
                       Enter this Shrine
                       <motion.span
                         animate={{ x: [0, 4, 0] }}
@@ -93,13 +93,13 @@ export default function ShrinesPage() {
             "The four shrines form a sacred geometry — each one a point of light in the divine constellation of Bhaskararajapuram."
           </p>
           <Link to="/saint"
-            className="inline-block bg-amber-700 text-white text-[11px] uppercase tracking-widest px-8 py-3 rounded-full hover:bg-amber-600 transition-colors font-semibold">
+            className="inline-block bg-gradient-to-r from-amber-600 to-amber-800 text-stone-50 border border-amber-500/30 shadow-[0_0_20px_rgba(180,83,9,0.3)] hover:shadow-[0_0_30px_rgba(180,83,9,0.6)] text-[11px] uppercase tracking-widest px-8 py-3 rounded-full hover:bg-amber-600 transition-colors font-semibold">
             Learn about the Saint →
           </Link>
         </Reveal>
       </section>
       {/* Massive Spacing */}
-      <div className="h-32 md:h-56 bg-[#181512]" />
+      <div className="h-32 md:h-56 bg-[#12100e]" />
     </PageTransition>
   );
 }

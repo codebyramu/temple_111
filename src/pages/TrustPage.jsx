@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Reveal, WipeReveal, PageTransition, Image3D, staggerContainer, staggerItem } from "../components/shared";
+import { Reveal, WipeReveal, HoverRow, PageTransition, Image3D, staggerContainer, staggerItem } from "../components/shared";
 
 export default function TrustPage() {
   return (
@@ -35,7 +35,7 @@ export default function TrustPage() {
       </section>
 
       {/* OVERVIEW */}
-      <section className="bg-[#1c1917] py-12 md:py-32">
+      <section className="bg-gradient-to-b from-[#1c1917] to-[#161412] py-12 md:py-32">
         <div className="max-w-4xl mx-auto px-5 md:px-10">
           <Reveal>
             <SplitText
@@ -61,7 +61,7 @@ export default function TrustPage() {
       </section>
 
       {/* OPPORTUNITIES */}
-      <section className="bg-[#181512] py-12 md:py-32">
+      <section className="bg-[#12100e] py-12 md:py-32">
         <div className="max-w-7xl mx-auto px-5 md:px-10">
           <Reveal>
             <SplitText
@@ -97,13 +97,13 @@ export default function TrustPage() {
       </section>
 
       {/* GET IN TOUCH */}
-      <section className="bg-[#1c1917] py-12 md:py-32">
+      <section className="bg-gradient-to-b from-[#1c1917] to-[#161412] py-12 md:py-32">
         <div className="max-w-4xl mx-auto px-5 md:px-10 text-center">
           <Reveal>
-            <h2 className="font-['Philosopher'] font-bold text-stone-100 leading-tight mb-8"
+            <SplitText className="font-['Philosopher'] font-bold text-stone-100 leading-tight mb-8"
               style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
               Contact & Donations
-            </h2>
+            </SplitText>
             <p className="text-stone-400 text-base md:text-lg font-light leading-relaxed mb-8">
               Donations can be made for temple upkeep, festival sponsorship, educational scholarships, and medical aid. For more details on volunteering or making a contribution, please get in touch with the Trust office.
             </p>
@@ -112,7 +112,7 @@ export default function TrustPage() {
               <p className="text-stone-500 text-sm uppercase tracking-widest">Bhaskararajapuram, Tamil Nadu</p>
               <div className="w-16 h-px bg-stone-300 my-2" />
               <p className="text-stone-400 text-sm">To volunteer or donate, please email us or visit the temple office.</p>
-              <a href="mailto:contact@bhaskararajapuram.com" className="mt-4 bg-amber-700 text-white text-[11px] uppercase tracking-widest px-8 py-3 rounded-full hover:bg-amber-600 transition-colors font-semibold">
+              <a href="mailto:contact@bhaskararajapuram.com" className="mt-4 bg-gradient-to-r from-amber-600 to-amber-800 text-stone-50 border border-amber-500/30 shadow-[0_0_20px_rgba(180,83,9,0.3)] hover:shadow-[0_0_30px_rgba(180,83,9,0.6)] text-[11px] uppercase tracking-widest px-8 py-3 rounded-full hover:bg-amber-600 transition-colors font-semibold">
                 Email the Trust
               </a>
             </div>
@@ -120,7 +120,7 @@ export default function TrustPage() {
         </div>
       </section>
       {/* Massive Spacing */}
-      <div className="h-32 md:h-56 bg-[#181512]" />
+      <div className="h-32 md:h-56 bg-[#12100e]" />
     </PageTransition>
   );
 }

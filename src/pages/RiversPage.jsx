@@ -37,13 +37,13 @@ export default function RiversPage() {
       </section>
 
       {/* INTRO */}
-      <section className="bg-[#1c1917] py-12 md:py-32">
+      <section className="bg-gradient-to-b from-[#1c1917] to-[#161412] py-12 md:py-32">
         <div className="max-w-4xl mx-auto px-5 md:px-10">
           <Reveal>
-            <h2 className="font-['Philosopher'] font-bold text-stone-100 leading-tight mb-8"
+            <SplitText className="font-['Philosopher'] font-bold text-stone-100 leading-tight mb-8"
               style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
               A Divine Triangle of Waters
-            </h2>
+            </SplitText>
           </Reveal>
           <div className="space-y-5 text-stone-400 text-base md:text-lg font-light leading-relaxed">
             <Reveal delay={0.1}><p>In ancient Indian tradition, a land touched by three sacred rivers is considered supremely blessed — a Triveni Sangam in spirit, where the energy of the waters amplifies the spiritual power of the land. Bhaskararajapuram is exactly such a place.</p></Reveal>
@@ -55,7 +55,7 @@ export default function RiversPage() {
 
       {/* RIVERS DETAIL */}
       {RIVERS.map((r, i) => (
-        <section key={r.id} className={i % 2 === 0 ? "bg-[#181512] py-20" : "bg-[#1c1917] py-20"}>
+        <section key={r.id} className={i % 2 === 0 ? "bg-[#12100e] py-20" : "bg-gradient-to-b from-[#1c1917] to-[#161412] py-20"}>
           <div className="max-w-7xl mx-auto px-5 md:px-10">
             <div className={`grid grid-cols-1 lg:grid-cols-2 gap-14 items-center ${i % 2 === 1 ? "lg:[&>*:first-child]:order-2" : ""}`}>
               <Reveal>
@@ -71,16 +71,16 @@ export default function RiversPage() {
 
               <Reveal delay={0.1}>
                 <div>
-                  <p className="text-[10px] uppercase tracking-widest text-amber-700 mb-3">Sacred River {["I", "II", "III"][i]}</p>
-                  <h2 className="font-['Philosopher'] font-bold text-stone-100 leading-tight mb-3"
+                  <p className="text-[10px] uppercase tracking-widest text-amber-500 mb-3">Sacred River {["I", "II", "III"][i]}</p>
+                  <SplitText className="font-['Philosopher'] font-bold text-stone-100 leading-tight mb-3"
                     style={{ fontSize: "clamp(2rem, 4vw, 3.2rem)" }}>
                     {r.name}
-                  </h2>
+                  </SplitText>
                   <p className="font-['Cormorant_Garamond'] italic text-stone-400 text-xl mb-6">{r.tagline}</p>
                   <p className="text-stone-400 text-base font-light leading-relaxed mb-4">{r.desc}</p>
                   <p className="text-stone-500 text-sm leading-relaxed">{r.story}</p>
                   <div className="mt-6 bg-amber-50 border border-amber-100 rounded-xl px-5 py-4">
-                    <p className="text-[10px] uppercase tracking-widest text-amber-700 mb-1">Spiritual Significance</p>
+                    <p className="text-[10px] uppercase tracking-widest text-amber-500 mb-1">Spiritual Significance</p>
                     <p className="text-stone-300 text-sm">{r.significance}</p>
                   </div>
                 </div>
@@ -99,13 +99,13 @@ export default function RiversPage() {
           </p>
           <div className="w-10 h-px bg-amber-700 mx-auto mb-6" />
           <Link to="/shrines"
-            className="inline-block bg-amber-700 text-white text-[11px] uppercase tracking-widest px-8 py-3 rounded-full hover:bg-amber-600 transition-colors font-semibold">
+            className="inline-block bg-gradient-to-r from-amber-600 to-amber-800 text-stone-50 border border-amber-500/30 shadow-[0_0_20px_rgba(180,83,9,0.3)] hover:shadow-[0_0_30px_rgba(180,83,9,0.6)] text-[11px] uppercase tracking-widest px-8 py-3 rounded-full hover:bg-amber-600 transition-colors font-semibold">
             Explore the Four Shrines →
           </Link>
         </Reveal>
       </section>
       {/* Massive Spacing */}
-      <div className="h-32 md:h-56 bg-[#181512]" />
+      <div className="h-32 md:h-56 bg-[#12100e]" />
     </PageTransition>
   );
 }

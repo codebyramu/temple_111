@@ -380,3 +380,71 @@ export const staggerItem = {
   hidden: { opacity: 0, y: 22 },
   show:   { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
 };
+
+
+export function HoverRow({ word, i }) {
+  const [filled, setFilled] = useState(false);
+  const rowRef = useRef(null);
+  const isTouch = typeof window !== "undefined"
+    ? window.matchMedia("(hover: none) and (pointer: coarse)").matches
+    : false;
+
+  // Mobile: fill triggers as the row scrolls into view
+  useEffect(() => {
+    if (!isTouch || !rowRef.current) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setFilled(true); },
+      { threshold: 0.6 }
+    );
+    observer.observe(rowRef.current);
+    return () => observer.disconnect();
+  }, [isTouch]);
+
+  return (
+    <div
+      ref={rowRef}
+      className="border-b border-stone-200 last:border-0 px-5 md:px-10 py-5 md:py-7 flex items-center relative overflow-hidden"
+      onMouseEnter={() => { if (!isTouch) setFilled(true); }}
+      onMouseLeave={() => { if (!isTouch) setFilled(false); }}
+      data-cursor-grow
+    >
+      {/* Slide-in entry animation wrapper */}
+      <motion.div
+        className="absolute inset-0 pointer-events-none"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, amount: 0.4 }}
+        transition={{ duration: 0.01 }}
+      />
+      {/* Yellow fill with wavy paint-drop edge */}
+      <motion.div
+        className="absolute top-0 bottom-0 left-0 bg-[#dca817]"
+        initial={{ width: "0%" }}
+        animate={{ width: filled ? "100%" : "0%" }}
+        transition={{ duration: isTouch ? 1.1 : 0.65, ease: [0.16, 1, 0.3, 1] }}
+      >
+        <svg
+          className="absolute right-[-39px] top-0 h-full w-[40px] text-[#dca817]"
+          preserveAspectRatio="none"
+          viewBox="0 0 40 100"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <path d="M0,0 C30,10 40,30 15,50 C-10,70 20,90 0,100 Z" />
+        </svg>
+      </motion.div>
+      {/* Slide-in word */}
+      <motion.span
+        className="relative z-10 mix-blend-multiply font-['Philosopher'] font-bold text-stone-900 leading-none select-none"
+        style={{ fontSize: "clamp(2.4rem, 8vw, 8rem)" }}
+        initial={{ x: i % 2 === 0 ? -50 : 50, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        viewport={{ once: true, amount: 0.4 }}
+        transition={{ duration: 0.9, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
+      >
+        {word}
+      </motion.span>
+    </div>
+  );
+}
+

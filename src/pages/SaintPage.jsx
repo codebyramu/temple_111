@@ -34,7 +34,7 @@ export default function SaintPage() {
       </section>
 
       {/* BIO */}
-      <section className="bg-[#1c1917] py-12 md:py-32">
+      <section className="bg-gradient-to-b from-[#1c1917] to-[#161412] py-12 md:py-32">
         <div className="max-w-7xl mx-auto px-5 md:px-10">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 md:gap-16 items-start">
             <div className="lg:col-span-3 space-y-6 text-stone-400 text-base md:text-lg font-light leading-relaxed">
@@ -72,7 +72,7 @@ export default function SaintPage() {
                     ["Legacy", "Centuries of living tradition"],
                   ].map(([k, v]) => (
                     <div key={k} className="flex justify-between items-start gap-4 pb-3 border-b border-amber-100 last:border-0">
-                      <p className="text-[10px] uppercase tracking-wider text-amber-700 whitespace-nowrap">{k}</p>
+                      <p className="text-[10px] uppercase tracking-wider text-amber-500 whitespace-nowrap">{k}</p>
                       <p className="text-stone-300 text-sm text-right">{v}</p>
                     </div>
                   ))}
@@ -93,12 +93,12 @@ export default function SaintPage() {
       </section>
 
       {/* WORKS */}
-      <section className="bg-[#181512] py-12 md:py-32">
+      <section className="bg-[#12100e] py-12 md:py-32">
         <div className="max-w-7xl mx-auto px-5 md:px-10">
           <Reveal>
-            <h2 className="font-['Philosopher'] font-bold text-stone-100 mb-4" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
+            <SplitText className="font-['Philosopher'] font-bold text-stone-100 mb-4" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
               40+ Sanskrit Works
-            </h2>
+            </SplitText>
             <p className="text-stone-500 font-light mb-14 max-w-xl mx-auto text-center">
               Bhaskararaya's writings remain authoritative texts in the Srividya tradition to this day. Here are some of his most celebrated works.
             </p>
@@ -106,7 +106,7 @@ export default function SaintPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {WORKS.map((w, i) => (
               <Reveal key={w.title} delay={i * 0.07}>
-                <div className="bg-[#292524] rounded-xl p-6 border border-stone-700/50 h-full">
+                <div className="relative bg-stone-900/60 backdrop-blur-xl rounded-2xl p-6 border border-white/5 hover:border-amber-500/30 hover:bg-stone-900/80 shadow-2xl overflow-hidden group transition-all duration-500 h-full">
                   <div className="w-8 h-px bg-amber-600 mb-4" />
                   <h3 className="font-['Philosopher'] font-semibold text-stone-100 text-base mb-3">{w.title}</h3>
                   <p className="text-stone-500 text-sm leading-relaxed">{w.desc}</p>
@@ -126,13 +126,13 @@ export default function SaintPage() {
             </p>
           </div>
           <Link to="/temple/bhaskarereswar-memorial"
-            className="flex-shrink-0 bg-amber-700 text-white text-[11px] uppercase tracking-widest px-8 py-3 rounded-full hover:bg-amber-600 transition-colors font-semibold">
+            className="flex-shrink-0 bg-gradient-to-r from-amber-600 to-amber-800 text-stone-50 border border-amber-500/30 shadow-[0_0_20px_rgba(180,83,9,0.3)] hover:shadow-[0_0_30px_rgba(180,83,9,0.6)] text-[11px] uppercase tracking-widest px-8 py-3 rounded-full hover:bg-amber-600 transition-colors font-semibold">
             Visit the Memorial →
           </Link>
         </div>
       </section>
       {/* Massive Spacing */}
-      <div className="h-32 md:h-56 bg-[#181512]" />
+      <div className="h-32 md:h-56 bg-[#12100e]" />
     </PageTransition>
   );
 }

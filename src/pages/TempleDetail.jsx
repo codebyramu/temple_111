@@ -1,6 +1,6 @@
 import { useParams, Link, Navigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Reveal, WipeReveal, Image3D, PageTransition, staggerContainer, staggerItem } from "../components/shared";
+import { Reveal, WipeReveal, HoverRow, Image3D, PageTransition, staggerContainer, staggerItem } from "../components/shared";
 import { TEMPLES } from "../data/content";
 
 export default function TempleDetail() {
@@ -56,12 +56,12 @@ export default function TempleDetail() {
       </section>
 
       {/* STORY */}
-      <section className="bg-[#1c1917] py-12 md:py-32">
+      <section className="bg-gradient-to-b from-[#1c1917] to-[#161412] py-12 md:py-32">
         <div className="max-w-4xl mx-auto px-5 md:px-10">
           <div className="space-y-8">
             {temple.fullStory.map((para, i) => (
               <Reveal key={i} delay={i * 0.1}>
-                <p className={`text-stone-400 leading-relaxed font-light ${i === 0
+                <p className={`text-stone-300 leading-relaxed font-light tracking-wide ${i === 0
                   ? "text-xl md:text-2xl font-['Cormorant_Garamond'] text-stone-300"
                   : "text-base md:text-lg"}`}>
                   {para}
@@ -70,25 +70,22 @@ export default function TempleDetail() {
             ))}
           </div>
           <Reveal delay={0.3}>
-            <div className="mt-14 border-l-4 border-amber-600 pl-8 py-2">
-              <p className="font-['Cormorant_Garamond'] italic text-stone-300 leading-snug"
-                style={{ fontSize: "clamp(1.4rem, 3vw, 2rem)" }}>
-                {temple.quote}
-              </p>
+            <div className="mt-14 border-l-4 border-amber-500/50 pl-8 py-4 relative"><div className="absolute inset-0 bg-gradient-to-r from-amber-900/10 to-transparent pointer-events-none" /><p className="font-['Cormorant_Garamond'] italic leading-snug drop-shadow-md text-stone-500" 
+                style={{ fontSize: "clamp(1.4rem, 3vw, 2rem)" }}><HoverRow word={temple.quote} /></p>
             </div>
           </Reveal>
         </div>
       </section>
 
       {/* FACTS */}
-      <section className="bg-[#181512] py-20 md:py-28">
+      <section className="bg-[#12100e] py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-5 md:px-10">
           <Reveal>
             <WipeReveal>
-              <h2 className="font-['Philosopher'] font-bold text-stone-100 mb-10"
+              <SplitText className="font-['Philosopher'] font-bold text-stone-100 mb-10"
                 style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
                 Shrine Details
-              </h2>
+              </SplitText>
             </WipeReveal>
           </Reveal>
           <motion.div
@@ -100,8 +97,8 @@ export default function TempleDetail() {
           >
             {temple.facts.map((f) => (
               <motion.div key={f.label} variants={staggerItem}
-                className="bg-[#292524] rounded-xl p-6 border border-stone-700/50 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
-                <p className="text-[10px] uppercase tracking-widest text-amber-700 mb-2">{f.label}</p>
+                className="relative bg-stone-900/60 backdrop-blur-xl rounded-2xl p-6 border border-white/5 hover:border-amber-500/30 hover:bg-stone-900/80 shadow-2xl overflow-hidden group transition-all duration-500 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+                <p className="text-[10px] uppercase tracking-widest text-amber-500 mb-2">{f.label}</p>
                 <p className="font-['Philosopher'] font-semibold text-stone-100 text-lg">{f.value}</p>
               </motion.div>
             ))}
@@ -110,10 +107,10 @@ export default function TempleDetail() {
       </section>
 
       {/* OTHER SHRINES */}
-      <section className="bg-[#1c1917] py-20">
+      <section className="bg-gradient-to-b from-[#1c1917] to-[#161412] py-20">
         <div className="max-w-7xl mx-auto px-5 md:px-10">
           <Reveal>
-            <p className="text-[10px] uppercase tracking-widest text-amber-700 mb-6">Other Shrines</p>
+            <p className="text-[10px] uppercase tracking-widest text-amber-500 mb-6">Other Shrines</p>
           </Reveal>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
             {TEMPLES.filter((t) => t.id !== temple.id).map((t, i) => (
@@ -149,13 +146,13 @@ export default function TempleDetail() {
             <p className="text-amber-600 text-xs uppercase tracking-widest mt-1">{nextTemple.deity}</p>
           </div>
           <Link to={`/temple/${nextTemple.id}`}
-            className="bg-amber-700 text-white text-[11px] uppercase tracking-widest px-8 py-3 rounded-full hover:bg-amber-600 transition-colors font-semibold whitespace-nowrap">
+            className="bg-gradient-to-r from-amber-600 to-amber-800 text-stone-50 border border-amber-500/30 shadow-[0_0_20px_rgba(180,83,9,0.3)] hover:shadow-[0_0_30px_rgba(180,83,9,0.6)] text-[11px] uppercase tracking-widest px-8 py-3 rounded-full hover:bg-amber-600 transition-colors font-semibold whitespace-nowrap">
             Enter Shrine {nextTemple.num} →
           </Link>
         </div>
       </section>
       {/* Massive Spacing */}
-      <div className="h-32 md:h-56 bg-[#181512]" />
+      <div className="h-32 md:h-56 bg-[#12100e]" />
     </PageTransition>
   );
 }

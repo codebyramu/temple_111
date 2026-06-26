@@ -41,15 +41,15 @@ export default function VillagePage() {
       </section>
 
       {/* INTRO */}
-      <section className="bg-[#1c1917] py-14 md:py-32">
+      <section className="bg-gradient-to-b from-[#1c1917] to-[#161412] py-14 md:py-32">
         <div className="max-w-7xl mx-auto px-5 md:px-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-start">
             <div>
               <Reveal>
-                <h2 className="font-['Philosopher'] font-bold text-stone-100 leading-tight mb-6"
+                <SplitText className="font-['Philosopher'] font-bold text-stone-100 leading-tight mb-6"
                   style={{ fontSize: "clamp(1.6rem, 3.5vw, 2.8rem)" }}>
                   The Land Itself is Sacred
-                </h2>
+                </SplitText>
                 <div className="space-y-5 text-stone-400 text-base md:text-lg font-light leading-relaxed">
                   <p>Bhaskararajapuram is not just a village — it is a living spiritual ecosystem. Located near Mayiladuthurai in Tamil Nadu, it sits at the confluence of three sacred rivers and carries the accumulated prayers of centuries in its soil.</p>
                   <p>The village takes its name from the great saint Bhaskararaya — a 17th-century scholar and devotee whose presence transformed this quiet settlement into one of the most spiritually significant sites in southern India.</p>
@@ -66,14 +66,14 @@ export default function VillagePage() {
               </Reveal>
               <Reveal delay={0.2}>
                 <div className="bg-amber-50 border border-amber-200 rounded-2xl p-6">
-                  <p className="text-[10px] uppercase tracking-widest text-amber-700 mb-3">Location</p>
+                  <p className="text-[10px] uppercase tracking-widest text-amber-500 mb-3">Location</p>
                   <p className="font-['Cinzel'] font-bold text-stone-100 text-lg mb-1">Near Mayiladuthurai</p>
                   <p className="text-stone-400 text-sm">Tamil Nadu, South India</p>
                   <div className="mt-4 pt-4 border-t border-amber-200 grid grid-cols-2 gap-4 text-sm text-stone-400">
-                    <div><span className="block text-[10px] uppercase tracking-wider text-amber-700 mb-1">Temples</span>4 Ancient Shrines</div>
-                    <div><span className="block text-[10px] uppercase tracking-wider text-amber-700 mb-1">Rivers</span>3 Sacred Rivers</div>
-                    <div><span className="block text-[10px] uppercase tracking-wider text-amber-700 mb-1">Legacy</span>Saint Bhaskararaya</div>
-                    <div><span className="block text-[10px] uppercase tracking-wider text-amber-700 mb-1">Tradition</span>Vedic, Tamil Agama</div>
+                    <div><span className="block text-[10px] uppercase tracking-wider text-amber-500 mb-1">Temples</span>4 Ancient Shrines</div>
+                    <div><span className="block text-[10px] uppercase tracking-wider text-amber-500 mb-1">Rivers</span>3 Sacred Rivers</div>
+                    <div><span className="block text-[10px] uppercase tracking-wider text-amber-500 mb-1">Legacy</span>Saint Bhaskararaya</div>
+                    <div><span className="block text-[10px] uppercase tracking-wider text-amber-500 mb-1">Tradition</span>Vedic, Tamil Agama</div>
                   </div>
                 </div>
               </Reveal>
@@ -83,13 +83,13 @@ export default function VillagePage() {
       </section>
 
       {/* TIMELINE */}
-      <section className="bg-[#181512] py-24 md:py-32">
+      <section className="bg-[#12100e] py-24 md:py-32">
         <div className="max-w-4xl mx-auto px-6 md:px-10">
           <Reveal>
-            <h2 className="font-['Cinzel'] font-bold text-stone-100 mb-16"
+            <SplitText className="font-['Cinzel'] font-bold text-stone-100 mb-16"
               style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
               A Living History
-            </h2>
+            </SplitText>
           </Reveal>
           <div className="space-y-0">
             {TIMELINE.map((t, i) => (
@@ -100,7 +100,7 @@ export default function VillagePage() {
                     {i < TIMELINE.length - 1 && <div className="w-px flex-1 bg-stone-300 mt-2" />}
                   </div>
                   <div className="pb-2">
-                    <p className="text-[10px] uppercase tracking-widest text-amber-700 font-semibold mb-2">{t.year}</p>
+                    <p className="text-[10px] uppercase tracking-widest text-amber-500 font-semibold mb-2">{t.year}</p>
                     <p className="text-stone-400 text-base leading-relaxed">{t.event}</p>
                   </div>
                 </div>
@@ -111,12 +111,12 @@ export default function VillagePage() {
       </section>
 
       {/* LINKS */}
-      <section className="bg-[#1c1917] py-20">
+      <section className="bg-gradient-to-b from-[#1c1917] to-[#161412] py-20">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <Reveal>
-            <h2 className="font-['Cinzel'] font-bold text-stone-100 mb-8" style={{ fontSize: "clamp(1.5rem, 3vw, 2.2rem)" }}>
+            <SplitText className="font-['Cinzel'] font-bold text-stone-100 mb-8" style={{ fontSize: "clamp(1.5rem, 3vw, 2.2rem)" }}>
               Continue Exploring
-            </h2>
+            </SplitText>
           </Reveal>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
             {[
@@ -139,7 +139,7 @@ export default function VillagePage() {
         </div>
       </section>
       {/* Massive Spacing */}
-      <div className="h-32 md:h-56 bg-[#181512]" />
+      <div className="h-32 md:h-56 bg-[#12100e]" />
     </PageTransition>
   );
 }

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Reveal, WipeReveal, PageTransition, Image3D, SplitText, staggerContainer, staggerItem } from "../components/shared";
+import { Reveal, WipeReveal, HoverRow, PageTransition, Image3D, SplitText, staggerContainer, staggerItem } from "../components/shared";
 
 export default function SahasranamamPage() {
   return (
@@ -35,7 +35,7 @@ export default function SahasranamamPage() {
       </section>
 
       {/* INTRO */}
-      <section className="bg-[#1c1917] py-12 md:py-32">
+      <section className="bg-gradient-to-b from-[#1c1917] to-[#161412] py-12 md:py-32">
         <div className="max-w-4xl mx-auto px-5 md:px-10">
           <Reveal>
             <SplitText
@@ -66,7 +66,7 @@ export default function SahasranamamPage() {
       </section>
 
       {/* BENEFITS */}
-      <section className="bg-[#181512] py-12 md:py-32">
+      <section className="bg-[#12100e] py-12 md:py-32">
         <div className="max-w-7xl mx-auto px-5 md:px-10">
           <Reveal>
             <SplitText
@@ -106,13 +106,13 @@ export default function SahasranamamPage() {
       </section>
 
       {/* THE VILLAGE CONNECTION */}
-      <section className="bg-[#1c1917] py-12 md:py-32">
+      <section className="bg-gradient-to-b from-[#1c1917] to-[#161412] py-12 md:py-32">
         <div className="max-w-4xl mx-auto px-5 md:px-10">
           <Reveal>
-            <h2 className="font-['Philosopher'] font-bold text-stone-100 leading-tight mb-8"
+            <SplitText className="font-['Philosopher'] font-bold text-stone-100 leading-tight mb-8"
               style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
               Central to Bhaskararajapuram
-            </h2>
+            </SplitText>
           </Reveal>
           <div className="space-y-6 text-stone-400 text-base md:text-lg font-light leading-relaxed">
             <Reveal delay={0.1}>
@@ -136,13 +136,13 @@ export default function SahasranamamPage() {
             "Each name corresponds to a specific section of the Sri Chakra, revealing the path from gross consciousness to cosmic union."
           </p>
           <Link to="/saint"
-            className="inline-block bg-amber-700 text-white text-[11px] uppercase tracking-widest px-8 py-3 rounded-full hover:bg-amber-600 transition-colors font-semibold">
+            className="inline-block bg-gradient-to-r from-amber-600 to-amber-800 text-stone-50 border border-amber-500/30 shadow-[0_0_20px_rgba(180,83,9,0.3)] hover:shadow-[0_0_30px_rgba(180,83,9,0.6)] text-[11px] uppercase tracking-widest px-8 py-3 rounded-full hover:bg-amber-600 transition-colors font-semibold">
             Learn about Shri Bhaskararaya →
           </Link>
         </Reveal>
       </section>
       {/* Massive Spacing */}
-      <div className="h-32 md:h-56 bg-[#181512]" />
+      <div className="h-32 md:h-56 bg-[#12100e]" />
     </PageTransition>
   );
 }
